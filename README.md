@@ -63,6 +63,9 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-bug-variants](skills/hunting-bug-variants) | research | One confirmed bug to its siblings and the paths a fix missed |
 | [extracting-nday-from-a-patch](skills/extracting-nday-from-a-patch) | research | A fix or version diff to the bug it fixed and the variants it left |
 | [adjudicating-dependency-cve-reachability](skills/adjudicating-dependency-cve-reachability) | research | Is a dependency CVE actually reachable from your code, or noise |
+| [auditing-the-lethal-trifecta](skills/auditing-the-lethal-trifecta) | agent | Where private data, untrusted content, and exfiltration meet in one agent context |
+| [testing-agents-for-indirect-prompt-injection](skills/testing-agents-for-indirect-prompt-injection) | agent | Does the agent obey instructions hidden in content it ingests |
+| [auditing-mcp-tool-integrations](skills/auditing-mcp-tool-integrations) | agent | Tool poisoning, shadowing, rug-pulls, token passthrough, output injection |
 | [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
@@ -83,8 +86,11 @@ on a small target. The method does not depend on which.
 - [x] Black-box: attack-surface recon and triage
 - [x] Research: bug-variant hunting, n-day from a patch, dependency-CVE
       reachability
-- [ ] AI-agent red-teaming: the lethal trifecta, indirect prompt injection,
-      MCP tool-integration abuse, multi-agent and excessive-agency failures
+- [x] AI-agent red-teaming: the lethal trifecta, indirect prompt injection,
+      MCP tool-integration abuse
+- [ ] More agent red-teaming: multi-agent and delegation abuse, excessive agency
+      and least-privilege, RAG and memory poisoning, guardrail and jailbreak
+      testing
 - [ ] Business-logic and access-control depth: logic-flaw hunting, fail-open
       access control, framework authorization-hook bypasses
 
