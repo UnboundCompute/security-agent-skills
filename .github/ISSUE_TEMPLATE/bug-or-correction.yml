@@ -1,0 +1,29 @@
+name: Bug or correction
+description: Report an error, a broken instruction, or an unclear step in a skill.
+title: "[fix] <skill name>: <short description>"
+labels: ["correction"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill
+      description: The skill directory name, or "repo" for a repo-wide issue.
+      placeholder: detecting-race-conditions
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: >-
+        Quote the step or line, and say what is incorrect, misleading, or
+        unclear about it.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should say instead
+      description: Your suggested correction, if you have one.
+    validations:
+      required: false

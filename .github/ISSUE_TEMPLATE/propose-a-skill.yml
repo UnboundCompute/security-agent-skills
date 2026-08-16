@@ -1,0 +1,63 @@
+name: Propose a skill
+description: Suggest a new security-testing skill for the library.
+title: "[skill] <short name of the method>"
+labels: ["skill-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a skill. The bar here is method, not tooling: a
+        skill should encode reasoning and adjudication discipline that transfers
+        to anyone, whatever tools they run. Please read CONTRIBUTING.md first.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill name
+      description: A gerund, kebab-case name, for example "auditing-token-scopes".
+      placeholder: verb-ing-the-thing
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What the skill does
+      description: One or two sentences on the class of flaw or the task it covers.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs here
+      description: >-
+        What makes this niche or high-leverage rather than commodity? What does a
+        good analyst reason about that a scanner misses?
+    validations:
+      required: true
+  - type: input
+    id: lane
+    attributes:
+      label: Lane
+      description: white-box, research, agent, black-box, or reporting.
+      placeholder: white-box
+    validations:
+      required: true
+  - type: textarea
+    id: loop
+    attributes:
+      label: Rough loop
+      description: >-
+        The ordered steps a tester would follow, and how a lead is confirmed or
+        killed. A sketch is fine; the point is that there is a real method here.
+    validations:
+      required: true
+  - type: checkboxes
+    id: fit
+    attributes:
+      label: Fit check
+      options:
+        - label: The method is tool-agnostic and names capabilities, not products.
+          required: true
+        - label: It is not already covered by an existing skill in the table.
+          required: true
+        - label: A finding from it maps onto the shared finding schema.
+          required: true
