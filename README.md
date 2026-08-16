@@ -60,12 +60,18 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-guard-gaps](skills/auditing-guard-gaps) | white-box | Find the unguarded peer of a guarded function |
 | [detecting-memory-safety-bugs](skills/detecting-memory-safety-bugs) | white-box | UAF, double-free, OOB, uninitialized, NULL deref |
 | [detecting-race-conditions](skills/detecting-race-conditions) | white-box | TOCTOU, check-then-act, atomicity, lock misuse |
+| [hunting-business-logic-flaws](skills/hunting-business-logic-flaws) | white-box | Step-skip, limit-overrun, replay, and paywall bypass the scanners miss |
 | [hunting-bug-variants](skills/hunting-bug-variants) | research | One confirmed bug to its siblings and the paths a fix missed |
 | [extracting-nday-from-a-patch](skills/extracting-nday-from-a-patch) | research | A fix or version diff to the bug it fixed and the variants it left |
 | [adjudicating-dependency-cve-reachability](skills/adjudicating-dependency-cve-reachability) | research | Is a dependency CVE actually reachable from your code, or noise |
+| [hunting-supply-chain-risks](skills/hunting-supply-chain-risks) | research | Dependency confusion, slopsquatting, poisoned pipeline execution, CI privilege |
 | [auditing-the-lethal-trifecta](skills/auditing-the-lethal-trifecta) | agent | Where private data, untrusted content, and exfiltration meet in one agent context |
 | [testing-agents-for-indirect-prompt-injection](skills/testing-agents-for-indirect-prompt-injection) | agent | Does the agent obey instructions hidden in content it ingests |
 | [auditing-mcp-tool-integrations](skills/auditing-mcp-tool-integrations) | agent | Tool poisoning, shadowing, rug-pulls, token passthrough, output injection |
+| [red-teaming-multi-agent-systems](skills/red-teaming-multi-agent-systems) | agent | Agent-to-agent injection, delegation loops, confused deputy, distributed trifecta |
+| [auditing-ai-agent-permissions](skills/auditing-ai-agent-permissions) | agent | Excessive agency, missing approval gates, egress, denial-of-wallet |
+| [testing-rag-and-memory-poisoning](skills/testing-rag-and-memory-poisoning) | agent | Poisoned index, memory, and search results that fire on an innocent query |
+| [testing-llm-insecure-output-handling](skills/testing-llm-insecure-output-handling) | agent | Model output to XSS, markdown-image exfil, terminal escapes, smuggled unicode |
 | [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
@@ -87,12 +93,14 @@ on a small target. The method does not depend on which.
 - [x] Research: bug-variant hunting, n-day from a patch, dependency-CVE
       reachability
 - [x] AI-agent red-teaming: the lethal trifecta, indirect prompt injection,
-      MCP tool-integration abuse
-- [ ] More agent red-teaming: multi-agent and delegation abuse, excessive agency
-      and least-privilege, RAG and memory poisoning, guardrail and jailbreak
-      testing
-- [ ] Business-logic and access-control depth: logic-flaw hunting, fail-open
-      access control, framework authorization-hook bypasses
+      MCP tool-integration abuse, multi-agent and delegation abuse, agent
+      permissions and least-privilege, RAG and memory poisoning, insecure
+      output handling
+- [x] Supply chain: dependency confusion, slopsquatting, poisoned pipeline
+      execution, CI privilege abuse
+- [x] Business-logic depth: step-skip, limit-overrun, replay, and paywall bypass
+- [ ] More access-control depth: fail-open access control, framework
+      authorization-hook bypasses
 
 ## Design
 
