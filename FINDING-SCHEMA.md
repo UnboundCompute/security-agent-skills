@@ -2,7 +2,7 @@
 
 Every skill in this library emits findings in one shape, so results are
 machine-readable, deduplicable, and ready to hand to the report skill without
-reformatting. A finding is a decided fact — either `confirmed` or `killed`, never
+reformatting. A finding is a decided fact - either `confirmed` or `killed`, never
 "maybe." Leads that haven't been adjudicated are not findings.
 
 ## Fields
@@ -10,9 +10,9 @@ reformatting. A finding is a decided fact — either `confirmed` or `killed`, ne
 | Field | Required | Meaning |
 |-------|----------|---------|
 | `id` | yes | Stable slug, e.g. `wb-2026-idor-bulk-delete`. |
-| `title` | yes | One line, the specific defect — not the class. |
+| `title` | yes | One line, the specific defect - not the class. |
 | `class` | yes | Vuln class, e.g. `path-traversal`, `use-after-free`, `race-condition`, `missing-authz`. |
-| `status` | yes | `confirmed` or `killed`. Killed findings are kept — they record what was ruled out and why. |
+| `status` | yes | `confirmed` or `killed`. Killed findings are kept - they record what was ruled out and why. |
 | `severity` | confirmed only | `info` / `low` / `medium` / `high` / `critical`. Justify in `impact`. |
 | `source` | yes | The untrusted entry point (request param, header, filename, env var, deserialized field…). Be exact: which input. |
 | `sink` | yes | The dangerous operation and the *exact argument* that is dangerous. |
@@ -35,7 +35,7 @@ class: path-traversal
 status: confirmed
 severity: high
 source: "HTTP body field `export.filename` on POST /api/reports/export"
-sink: "open(path, 'w') — the `path` argument, export_writer.py"
+sink: "open(path, 'w') - the `path` argument, export_writer.py"
 path:
   - "handler.export_report  (reads body.filename)"
   - "ReportJob.__init__     (stores as self.name, no normalization)"
@@ -59,7 +59,7 @@ title: "Search endpoint SQL built from user query"
 class: sql-injection
 status: killed
 source: "GET /api/search?q="
-sink: "cursor.execute(sql) — search_repo.py"
+sink: "cursor.execute(sql) - search_repo.py"
 path: ["handler.search → SearchRepo.run → cursor.execute"]
 reachable: true
 kill_reason: "SearchRepo.run passes q as a bound parameter (execute(sql, (q,))); q never concatenated into sql. Confirmed at every hop."

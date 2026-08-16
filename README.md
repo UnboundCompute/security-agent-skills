@@ -1,83 +1,105 @@
 # redteam-agent-skills
 
-Agent skills that encode security-testing *methodology* — the reasoning,
-ordering, and adjudication discipline behind real black-box and white-box
-testing — as portable [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills).
+Agent skills that encode security-testing *methodology*: the reasoning, ordering,
+and adjudication discipline behind real black-box and white-box testing, written
+as portable [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills).
 
-The bet: a skill's value is not a script, it's judgment. *Enumerate the whole
+The bet is that a skill's value is judgment, not a script. Enumerate the whole
 taxonomy before you look at one family. Rank is triage, not a filter. A lead is a
-fact, never a verdict.* That transfers to anyone, whatever tools they run — so
-every skill here is tool-agnostic method. Each one names the *capability* a step
-needs ("something that answers who calls this from a real parse") without
-prescribing a product; bring your own.
+fact, never a verdict. That reasoning transfers to anyone, whatever tools they
+run, so every skill here is tool-agnostic method. Each one names the *capability*
+a step needs (for example, "something that answers who calls this from a real
+parse") without prescribing a product. Bring your own.
 
-## Scope & ethics
+## Scope and ethics
 
 These skills are for **authorized** security work only: your own code, OSS you
 contribute to, CTFs, and engagements where testing is in scope. Every skill opens
-with a scope check or gate. Nothing here targets systems you don't have
+with a scope check or gate. Nothing here targets systems you do not have
 permission to test.
 
-## Layout
+## Install
+
+### As a plugin (recommended)
+
+Installs all skills at once and keeps them updatable. In Claude Code:
 
 ```
-whitebox/    source-available analysis over code structure (call graph + dataflow)
-  hunting-bugs-with-a-code-graph/   master loop: orient, enumerate taxonomy, adjudicate
-  adjudicating-taint-paths/         source→sink lead → confirmed finding or a kill
-  auditing-guard-gaps/              the unguarded peer of a guarded function
-  detecting-memory-safety-bugs/     UAF, double-free, OOB, uninit, NULL deref
-  detecting-race-conditions/        TOCTOU, check-then-act, atomicity, lock misuse
-blackbox/    live-target testing with no source
-  mapping-attack-surface/           authorized recon → prioritized surface inventory
-reporting/
-  writing-vuln-reports/             confirmed finding → reproducible writeup
-FINDING-SCHEMA.md                   the one shape every finding takes
+/plugin marketplace add UnboundCompute/redteam-agent-skills
+/plugin install redteam-agent-skills@unboundcompute
 ```
 
-Every finding — from any skill — is emitted in the shared
-[finding schema](./FINDING-SCHEMA.md), so results are consistent, deduplicable,
-and ready for `writing-vuln-reports` without reformatting.
+The skills are then available to Claude automatically, matched by their name and
+description. Update later with `/plugin marketplace update unboundcompute`.
 
-Each skill is a directory with a `SKILL.md` (YAML frontmatter + body). The
-whitebox skills assume you have *some* way to answer structural questions from a
-real parse — a code property graph, a static analyzer, or careful manual tracing
-on a small target. The method doesn't depend on which.
+### One skill by hand
 
-## Using a skill
+Copy any single skill directory into your skills path:
 
-**Claude Code** — drop a skill directory into `.claude/skills/` in your project
-(or `~/.claude/skills/` globally); it's picked up by its `name` and `description`.
+```
+# project-local (checked in with your repo)
+cp -r skills/detecting-race-conditions .claude/skills/
 
-**Any agent / by hand** — the `SKILL.md` bodies read as standalone playbooks.
-Follow the loop, run your own tools at each step, emit findings in the schema.
+# or personal (available in every project)
+cp -r skills/detecting-race-conditions ~/.claude/skills/
+```
+
+### Any other agent
+
+The `SKILL.md` bodies are standalone playbooks. Point any agent runtime that
+follows the [Agent Skills](https://agentskills.io) format at the `skills/`
+directory, or read a `SKILL.md` and follow the loop by hand, running your own
+tools at each step and emitting findings in the shared schema.
+
+## The skills
+
+| Skill | Lane | What it does |
+|-------|------|--------------|
+| [hunting-bugs-with-a-code-graph](skills/hunting-bugs-with-a-code-graph) | white-box | Master loop: orient, enumerate the whole taxonomy, adjudicate |
+| [adjudicating-taint-paths](skills/adjudicating-taint-paths) | white-box | Turn a source-to-sink lead into a confirmed finding or a documented kill |
+| [auditing-guard-gaps](skills/auditing-guard-gaps) | white-box | Find the unguarded peer of a guarded function |
+| [detecting-memory-safety-bugs](skills/detecting-memory-safety-bugs) | white-box | UAF, double-free, OOB, uninitialized, NULL deref |
+| [detecting-race-conditions](skills/detecting-race-conditions) | white-box | TOCTOU, check-then-act, atomicity, lock misuse |
+| [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
+| [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
+
+Every finding, from any skill, is emitted in the shared
+[finding schema](FINDING-SCHEMA.md), so results are consistent, deduplicable, and
+ready for `writing-vuln-reports` without reformatting.
+
+Each skill is a directory with a `SKILL.md` (YAML frontmatter plus body). The
+white-box skills assume you have *some* way to answer structural questions from a
+real parse: a code property graph, a static analyzer, or careful manual tracing
+on a small target. The method does not depend on which.
 
 ## Roadmap
 
-- [x] Whitebox: code-graph bug hunting, taint adjudication, guard-gap audit,
-      memory-safety, race conditions
-- [x] Reporting: finding → reproducible writeup
-- [x] Blackbox: attack-surface recon & triage
-- [ ] Blackbox per-class: IDOR/BOLA, auth-bypass/BFLA, SSRF, open redirect,
+- [x] White-box: code-graph bug hunting, taint adjudication, guard-gap audit,
+      memory safety, race conditions
+- [x] Reporting: finding to reproducible writeup
+- [x] Black-box: attack-surface recon and triage
+- [ ] Black-box per-class: IDOR/BOLA, auth bypass/BFLA, SSRF, open redirect,
       file upload, injection, OAuth/JWT, request smuggling, GraphQL,
       deserialization
-- [ ] A meta "distill-a-skill" that turns a writeup/CVE into a new SKILL.md
+- [ ] A meta "distill-a-skill" that turns a writeup or CVE into a new `SKILL.md`
 
 ## Design
 
-Built on the patterns that make skills reliably trigger and get used: gerund
-names, a `description` written as a routing rule (what + when + trigger terms,
-third person), a lean body with progressive disclosure, concrete worked
-examples, and a "rationalizations to reject" section per skill. See
-[CONTRIBUTING.md](./CONTRIBUTING.md) for the authoring checklist. Structure
-informed by Anthropic's Agent Skills best-practices and the conventions of
-existing open-source security skill libraries.
+These are built on the patterns that make skills reliably trigger and get used:
+gerund names, a `description` written as a routing rule (what plus when plus
+trigger terms, third person), a lean body with progressive disclosure, concrete
+worked examples, and a "rationalizations to reject" section per skill. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the authoring checklist. The structure is
+informed by Anthropic's Agent Skills guidance and the conventions of existing
+open-source security skill libraries.
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). New skills lead with tool-agnostic
-method, keep the scope check, name capabilities rather than products, and emit
-the shared finding schema.
+Contributions are welcome. New skills lead with tool-agnostic method, keep the
+scope check, name capabilities rather than products, and emit the shared finding
+schema. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR, and file an
+issue first if you want to discuss a new skill or a larger change.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT. See [LICENSE](LICENSE).

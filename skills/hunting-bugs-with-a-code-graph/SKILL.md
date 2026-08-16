@@ -1,8 +1,8 @@
 ---
 name: hunting-bugs-with-a-code-graph
 description: >-
-  Hunt security bugs across a whole codebase by reasoning over its structure —
-  call graph and dataflow — instead of grepping for keywords. Use when you have
+  Hunt security bugs across a whole codebase by reasoning over its structure
+  (call graph and dataflow) instead of grepping for keywords. Use when you have
   source access to an authorized target (your own code, an OSS project, or an
   in-scope engagement) and want systematic coverage of a bug taxonomy rather
   than a single hunch; when the question is "who calls this, what reaches this
@@ -16,7 +16,7 @@ license: MIT
 
 Grep finds strings; it misses the caller behind a rename, an alias, or an import
 indirection, and it cannot answer "what can flow into this argument." Reasoning
-over a codebase's *structure* — its call graph and dataflow — can. This skill is
+over a codebase's *structure* - its call graph and dataflow - can. This skill is
 the master loop for a source-level hunt. Two companions go deeper on single
 moves: `adjudicating-taint-paths` (lead → decided finding) and
 `auditing-guard-gaps` (the unguarded peer of a guarded function).
@@ -36,15 +36,15 @@ can't name why you're allowed to read this source, stop.
 ## The loop
 
 1. **Index the target.** Build a structural index of the source tree. It is a
-   *snapshot* — re-index whenever the code changes in a way that matters, or you
+   *snapshot* - re-index whenever the code changes in a way that matters, or you
    will adjudicate against stale structure.
 
-2. **Orient before hunting.** Start from the most-connected functions — the
-   structural spine, where input arrives and trust boundaries sit — not from a
+2. **Orient before hunting.** Start from the most-connected functions - the
+   structural spine, where input arrives and trust boundaries sit - not from a
    file you happened to open. Map the top-level entry points and the module
    layout before drilling in.
 
-3. **Enumerate the whole taxonomy — never one family.** List *every* bug class
+3. **Enumerate the whole taxonomy - never one family.** List *every* bug class
    your catalog covers before examining any single one. Do not scope the hunt to
    the class you expect (injection, memory copy, whatever) because it's familiar.
    Coverage is over the whole taxonomy; a hunt that only ever looks at one family
@@ -52,7 +52,7 @@ can't name why you're allowed to read this source, stop.
 
 4. **Rank is triage, not a filter.** A ranked lead list orders your *attention*.
    Inclusion is exhaustive; a low rank never justifies dropping a candidate from
-   examination. Work down the list — don't truncate it.
+   examination. Work down the list - don't truncate it.
 
 5. **Leads are facts, not verdicts.** A lead means "the structure here matches a
    known-dangerous shape," never "this is a bug." Adjudicate each by tracing its
@@ -67,7 +67,7 @@ can't name why you're allowed to read this source, stop.
    [finding schema](../../FINDING-SCHEMA.md), *including* killed leads. Then state
    what the taxonomy did **not** cover. Temporal/lifetime classes (use-after-free,
    double-free), integer-overflow-as-a-class, and uninitialized/NULL deref are
-   commonly *not* modeled as catalog families — hunt those with
+   commonly *not* modeled as catalog families - hunt those with
    `detecting-memory-safety-bugs` and `detecting-race-conditions`. An empty result
    over a partial taxonomy is not "the code is clean"; say which classes were out
    of scope of the catalog versus genuinely checked and clean.
@@ -76,7 +76,7 @@ can't name why you're allowed to read this source, stop.
 
 > **Cold start on a Python web service.**
 > 1. Orient: the spine surfaces `app.dispatch` and three request handlers as the
->    highest-traffic nodes — that's where untrusted input lands.
+>    highest-traffic nodes - that's where untrusted input lands.
 > 2. Enumerate taxonomy: catalog lists path-traversal, injection, SSRF, open-
 >    redirect, deserialization, missing-authz (and flags memory/temporal classes
 >    as *not modeled*).
@@ -90,7 +90,7 @@ can't name why you're allowed to read this source, stop.
 
 ## Rationalizations to reject
 
-Shortcuts that cause misses and false positives — refuse them:
+Shortcuts that cause misses and false positives - refuse them:
 
 - *"This family is where the bug will be, I'll start there."* → You'll stop there.
   Enumerate the whole census first.
@@ -107,12 +107,12 @@ something that answers, from a real parse rather than text matching: who calls a
 function, what a value can flow into, and the exact source of a declaration. A
 code property graph gives you all three; a good static analyzer covers much of
 it; careful manual tracing covers the rest on a small target. Whatever you use,
-keep the snapshot caveat — re-index after the source changes.
+keep the snapshot caveat - re-index after the source changes.
 
 ## Related
 
-- `adjudicating-taint-paths` — confirm or kill a source→sink lead.
-- `auditing-guard-gaps` — find the unguarded peer of a guarded function.
-- `detecting-memory-safety-bugs`, `detecting-race-conditions` — the classes a
+- `adjudicating-taint-paths` - confirm or kill a source→sink lead.
+- `auditing-guard-gaps` - find the unguarded peer of a guarded function.
+- `detecting-memory-safety-bugs`, `detecting-race-conditions` - the classes a
   catalog usually doesn't model.
-- [FINDING-SCHEMA.md](../../FINDING-SCHEMA.md) — the shape every finding takes.
+- [FINDING-SCHEMA.md](../../FINDING-SCHEMA.md) - the shape every finding takes.

@@ -1,8 +1,8 @@
 ---
 name: detecting-memory-safety-bugs
 description: >-
-  Find memory-safety bugs in C/C++ and other unmanaged code — use-after-free,
-  double-free, out-of-bounds read/write, uninitialized use, and NULL deref — by
+  Find memory-safety bugs in C/C++ and other unmanaged code - use-after-free,
+  double-free, out-of-bounds read/write, uninitialized use, and NULL deref - by
   reasoning about object lifetime and buffer bounds along real code paths. Use on
   an authorized source target when a candidate catalog does NOT model these
   temporal/lifetime classes (most don't), so a keyword or sink scan will miss
@@ -15,7 +15,7 @@ license: MIT
 # Detecting memory-safety bugs
 
 Temporal and spatial memory bugs are the ones a sink-based catalog usually
-*doesn't* model: there's no single "dangerous function" to grep — the bug is a
+*doesn't* model: there's no single "dangerous function" to grep - the bug is a
 relationship between a pointer's lifetime and its use, or between an index and a
 bound, spread across code paths. So you hunt them by reasoning about lifetime and
 bounds, not by matching a call. This skill covers the five workhorse classes and
@@ -36,11 +36,11 @@ Authorized source only. If you can't name the authorization, stop.
 ## The five classes and how to confirm each
 
 For every candidate, the confirmation is a *path*: an allocation/definition site,
-the operation that changes its state, and the use — read the source at each.
+the operation that changes its state, and the use - read the source at each.
 
 1. **Use-after-free (UAF).** A pointer is used after its object is freed. Hunt:
    for each `free`/`delete`/refcount-drop, ask *what still holds this pointer* and
-   *can any path reach a use after this point* — including aliases stored in
+   *can any path reach a use after this point* - including aliases stored in
    structs, callbacks, and error paths. Confirm: a live path free → … → deref with
    no reassignment in between. Watch the classic shapes: free-in-a-loop then use,
    free in an error branch then fallthrough use, and a cached pointer that
@@ -55,7 +55,7 @@ the operation that changes its state, and the use — read the source at each.
    Hunt: every buffer access where the index/length is attacker-influenced or
    derived from a separate field (length prefixes are a hotspot). Confirm: trace
    the index/length source and the buffer's true size; the bug is any path where
-   `index/len` can exceed `size` — off-by-one at `<= size`, unchecked `memcpy`
+   `index/len` can exceed `size` - off-by-one at `<= size`, unchecked `memcpy`
    length, integer-truncated length, signed/unsigned confusion at the check.
 
 4. **Uninitialized use.** A value is read before it's written. Hunt: stack structs
@@ -70,7 +70,7 @@ the operation that changes its state, and the use — read the source at each.
 
 ## Integer overflow feeds all of the above
 
-Overflow is rarely the *final* bug — it's the step that produces a bad
+Overflow is rarely the *final* bug - it's the step that produces a bad
 length/index/size. Treat `a * b`, `a + b`, and truncating casts on
 attacker-influenced sizes as candidates *because* they flow into an allocation or
 a bound. Trace overflow → size/index → memory op; report the memory bug with the
@@ -79,7 +79,7 @@ overflow as its cause.
 ## Worked example
 
 > **UAF via error path.** In `parse_record`: `rec = alloc(); if (read(rec) < 0) {
-> free(rec); }  … use(rec->field);` — the `free` is in the error branch but the
+> free(rec); }  … use(rec->field);` - the `free` is in the error branch but the
 > function falls through to `use(rec->field)` without returning. Path: alloc →
 > free (error branch) → deref (fallthrough). **Confirmed UAF**; `reachable =
 > conditional` (read returns < 0); impact = attacker-triggered malformed record
@@ -109,7 +109,7 @@ per the [finding schema](../../FINDING-SCHEMA.md) with the alloc/free/use hops i
 
 ## Related
 
-- `adjudicating-taint-paths` — for the attacker-input side (who controls the
+- `adjudicating-taint-paths` - for the attacker-input side (who controls the
   length/index).
-- `hunting-bugs-with-a-code-graph` — the master loop that routes these here.
+- `hunting-bugs-with-a-code-graph` - the master loop that routes these here.
 - [FINDING-SCHEMA.md](../../FINDING-SCHEMA.md).

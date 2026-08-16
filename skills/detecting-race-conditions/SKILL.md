@@ -1,8 +1,8 @@
 ---
 name: detecting-race-conditions
 description: >-
-  Find concurrency and time-of-check/time-of-use bugs — TOCTOU, unsynchronized
-  shared state, check-then-act, and atomicity violations — by reasoning about
+  Find concurrency and time-of-check/time-of-use bugs - TOCTOU, unsynchronized
+  shared state, check-then-act, and atomicity violations - by reasoning about
   what state is shared, what can interleave, and where a window opens between a
   check and its use. Use on an authorized source target when the risk is
   ordering, not a single tainted value; when reviewing multithreaded code, shared
@@ -14,7 +14,7 @@ license: MIT
 
 # Detecting race conditions
 
-Race bugs don't live in one line — they live in the *gap* between two operations
+Race bugs don't live in one line - they live in the *gap* between two operations
 that another actor can slip through. There's no tainted value to trace and no
 single sink to grep; you find them by asking what state is shared, what runs
 concurrently, and where a window opens between deciding something and acting on
@@ -39,7 +39,7 @@ orders where one is safe and the other, achievable by an attacker, is not.
 
 1. **TOCTOU (time-of-check to time-of-use).** State is validated, then used, and
    it can change in between. Classic filesystem form: `access(path)` /
-   `stat(path)` then `open(path)` — a symlink swap in the window redirects the
+   `stat(path)` then `open(path)` - a symlink swap in the window redirects the
    open. General form: any `check(x); … ; use(x)` where `x` (or what it names) is
    mutable by another actor in the gap. Confirm: identify the shared thing, show a
    writer that can change it between check and use.
@@ -107,6 +107,6 @@ window. State each finding as an interleaving witness and emit per the
 
 ## Related
 
-- `auditing-guard-gaps` — when only *some* paths take the lock/transaction.
-- `hunting-bugs-with-a-code-graph` — the master loop that routes these here.
+- `auditing-guard-gaps` - when only *some* paths take the lock/transaction.
+- `hunting-bugs-with-a-code-graph` - the master loop that routes these here.
 - [FINDING-SCHEMA.md](../../FINDING-SCHEMA.md).

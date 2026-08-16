@@ -1,0 +1,21 @@
+{
+  "name": "redteam-agent-skills",
+  "version": "0.1.0",
+  "description": "Security-testing methodology as portable agent skills: recon, code-graph bug hunting, taint adjudication, guard-gap audit, memory safety, race conditions, and vulnerability reporting.",
+  "author": {
+    "name": "UnboundCompute"
+  },
+  "homepage": "https://github.com/UnboundCompute/redteam-agent-skills",
+  "repository": "https://github.com/UnboundCompute/redteam-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "appsec",
+    "red-team",
+    "vulnerability-research",
+    "static-analysis",
+    "taint-analysis",
+    "agent-skills"
+  ],
+  "skills": "./skills/"
+}

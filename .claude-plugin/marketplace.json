@@ -1,0 +1,20 @@
+{
+  "name": "unboundcompute",
+  "owner": {
+    "name": "UnboundCompute",
+    "url": "https://github.com/UnboundCompute"
+  },
+  "metadata": {
+    "description": "Security-testing agent skills from UnboundCompute.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "redteam-agent-skills",
+      "source": ".",
+      "description": "Recon, code-graph bug hunting, taint adjudication, guard-gap audit, memory safety, race conditions, and vulnerability reporting, as portable agent skills.",
+      "category": "security",
+      "license": "MIT"
+    }
+  ]
+}

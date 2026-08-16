@@ -2,7 +2,7 @@
 name: mapping-attack-surface
 description: >-
   Map and prioritize the attack surface of an authorized black-box web target
-  before testing it — enumerate hosts, endpoints, parameters, auth flows, and
+  before testing it - enumerate hosts, endpoints, parameters, auth flows, and
   technologies, then order them by where bugs actually live. Use at the start of
   an in-scope engagement or bug-bounty target when you have a URL/app but no
   source, and need a systematic surface inventory instead of poking random
@@ -19,7 +19,7 @@ prioritized inventory of everything that takes input, ordered by where bugs live
 This skill is the front of the black-box workflow; per-class hunting skills act on
 its output.
 
-## Scope gate — before anything else
+## Scope gate - before anything else
 
 Establish and write down scope *first*, and check every action against it:
 
@@ -40,7 +40,7 @@ scope. Stop and confirm.
 ## The recon loop
 
 1. **Enumerate hosts.** From the in-scope roots: subdomains, related domains,
-   and the apps behind them. Distinguish the origin from CDN/WAF front — testing
+   and the apps behind them. Distinguish the origin from CDN/WAF front - testing
    a CDN edge as if it were the origin yields noise.
 
 2. **Fingerprint the stack.** Server, framework, language, CMS, reverse proxy,
@@ -51,12 +51,12 @@ scope. Stop and confirm.
    (with an in-scope test account), capture the real traffic, and pull the API
    surface from it. Add documented surface (OpenAPI/GraphQL introspection, JS
    bundles that reveal routes and params). Most surface is *not* what you clicked
-   — it's referenced in client code and specs.
+   - it's referenced in client code and specs.
 
 4. **Map the auth and session model.** How you log in, what a token/cookie
    represents, what scopes/roles exist, where the boundary between users sits.
    This is where the highest-severity black-box bugs (IDOR/BOLA, BFLA, auth
-   bypass) live — map it deliberately, not incidentally.
+   bypass) live - map it deliberately, not incidentally.
 
 5. **Catalog state-changing and input-taking operations.** Every endpoint that
    writes, uploads, redirects, fetches a URL, renders a template, or takes an id.
@@ -65,7 +65,7 @@ scope. Stop and confirm.
 6. **Prioritize.** Order the surface by expected yield: authenticated
    state-changers and object references (IDOR/BFLA) and anything that reflects,
    fetches, or parses input first; static/low-privilege surface last. Rank is
-   triage — the whole inventory stays on the list; the order just says what to
+   triage - the whole inventory stays on the list; the order just says what to
    test first.
 
 ## What "good recon output" looks like
@@ -103,12 +103,12 @@ a prioritized test order. Everything downstream reads from this.
 
 Use whatever capture and enumeration tooling you have: an intercepting proxy or
 browser capture for authenticated traffic, subdomain/asset enumeration for hosts,
-and spec/bundle extraction for hidden routes. The output is tool-agnostic — a
+and spec/bundle extraction for hidden routes. The output is tool-agnostic - a
 written, prioritized surface inventory. Confirmed issues found while testing it
 are written up with `writing-vuln-reports`.
 
 ## Related
 
-- `writing-vuln-reports` — for anything confirmed during testing.
-- (roadmap) per-class black-box skills — IDOR/BOLA, auth-bypass/BFLA, SSRF, open
-  redirect, upload, injection — each consuming this inventory.
+- `writing-vuln-reports` - for anything confirmed during testing.
+- (roadmap) per-class black-box skills - IDOR/BOLA, auth-bypass/BFLA, SSRF, open
+  redirect, upload, injection - each consuming this inventory.
