@@ -60,6 +60,9 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-guard-gaps](skills/auditing-guard-gaps) | white-box | Find the unguarded peer of a guarded function |
 | [detecting-memory-safety-bugs](skills/detecting-memory-safety-bugs) | white-box | UAF, double-free, OOB, uninitialized, NULL deref |
 | [detecting-race-conditions](skills/detecting-race-conditions) | white-box | TOCTOU, check-then-act, atomicity, lock misuse |
+| [hunting-bug-variants](skills/hunting-bug-variants) | research | One confirmed bug to its siblings and the paths a fix missed |
+| [extracting-nday-from-a-patch](skills/extracting-nday-from-a-patch) | research | A fix or version diff to the bug it fixed and the variants it left |
+| [adjudicating-dependency-cve-reachability](skills/adjudicating-dependency-cve-reachability) | research | Is a dependency CVE actually reachable from your code, or noise |
 | [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
@@ -78,10 +81,12 @@ on a small target. The method does not depend on which.
       memory safety, race conditions
 - [x] Reporting: finding to reproducible writeup
 - [x] Black-box: attack-surface recon and triage
-- [ ] Black-box per-class: IDOR/BOLA, auth bypass/BFLA, SSRF, open redirect,
-      file upload, injection, OAuth/JWT, request smuggling, GraphQL,
-      deserialization
-- [ ] A meta "distill-a-skill" that turns a writeup or CVE into a new `SKILL.md`
+- [x] Research: bug-variant hunting, n-day from a patch, dependency-CVE
+      reachability
+- [ ] AI-agent red-teaming: the lethal trifecta, indirect prompt injection,
+      MCP tool-integration abuse, multi-agent and excessive-agency failures
+- [ ] Business-logic and access-control depth: logic-flaw hunting, fail-open
+      access control, framework authorization-hook bypasses
 
 ## Design
 
