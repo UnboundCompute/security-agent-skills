@@ -1,7 +1,7 @@
 {
   "name": "redteam-agent-skills",
-  "version": "0.1.0",
-  "description": "Security-testing methodology as portable agent skills: recon, code-graph bug hunting, taint adjudication, guard-gap audit, memory safety, race conditions, and vulnerability reporting.",
+  "version": "0.3.0",
+  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
   },
@@ -15,6 +15,11 @@
     "vulnerability-research",
     "static-analysis",
     "taint-analysis",
-    "agent-skills"
+    "agent-skills",
+    "llm-security",
+    "ai-agents",
+    "prompt-injection",
+    "mcp",
+    "supply-chain"
   ]
 }

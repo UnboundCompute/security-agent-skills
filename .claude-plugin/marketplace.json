@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "Security-testing agent skills from UnboundCompute.",
-    "version": "0.1.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "redteam-agent-skills",
       "source": ".",
-      "description": "Recon, code-graph bug hunting, taint adjudication, guard-gap audit, memory safety, race conditions, and vulnerability reporting, as portable agent skills.",
+      "description": "White-box bug hunting, AI-agent and LLM red-teaming, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics, as portable tool-agnostic agent skills.",
       "category": "security",
       "license": "MIT"
     }
