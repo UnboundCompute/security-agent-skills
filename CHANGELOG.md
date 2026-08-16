@@ -3,6 +3,23 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.4.0
+
+Added a cloud identity and CI/CD trust lane, growing the library from 30 to 33
+skills across six lanes.
+
+Added, cloud identity and CI/CD trust:
+
+- `hunting-iam-privilege-escalation-paths`
+- `auditing-cicd-oidc-trust`
+- `hunting-non-human-identity-and-secret-reachability`
+
+Changed:
+
+- README badge, hero, skills table, and roadmap updated for the cloud lane.
+- Plugin and marketplace manifests updated to version 0.4.0 with a
+  `cloud-security` keyword.
+
 ## 0.3.0
 
 Grew the library from 13 to 30 skills and aligned the install identity to the

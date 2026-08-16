@@ -1,12 +1,13 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-30-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-33-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**30 tool-agnostic security-testing skills for AI coding agents: white-box bug
-hunting, AI-agent and LLM red-teaming, supply-chain risk, and appsec depth.**
+**33 tool-agnostic security-testing skills for AI coding agents: white-box bug
+hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust,
+supply-chain risk, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -92,6 +93,9 @@ tools at each step and emitting findings in the shared schema.
 | [testing-request-smuggling](skills/testing-request-smuggling) | black-box | Front-end and back-end desync from conflicting length signals |
 | [testing-client-side-dom-vulnerabilities](skills/testing-client-side-dom-vulnerabilities) | black-box | DOM XSS, clobbering, prototype pollution, unsafe messaging, cross-origin leaks |
 | [exploiting-ssrf-to-cloud-metadata](skills/exploiting-ssrf-to-cloud-metadata) | black-box | SSRF proven to internal reach and instance-credential theft |
+| [hunting-iam-privilege-escalation-paths](skills/hunting-iam-privilege-escalation-paths) | cloud | Chain role assumptions, policy rewrites, and loose trust from low-priv to admin |
+| [auditing-cicd-oidc-trust](skills/auditing-cicd-oidc-trust) | cloud | Fork-run secret exposure, poisoned pipeline execution, over-broad token trust |
+| [hunting-non-human-identity-and-secret-reachability](skills/hunting-non-human-identity-and-secret-reachability) | cloud | Machine credentials that are live, over-privileged, and actually reachable |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -124,6 +128,8 @@ on a small target. The method does not depend on which.
 - [x] Access-control depth: fail-open controls, declarative authorization gaps
 - [x] Appsec depth: crypto misuse, federation (SAML and OIDC) flows, request
       smuggling, client-side DOM attacks, SSRF to cloud metadata
+- [x] Cloud identity and CI/CD trust: IAM privilege-escalation paths, pipeline
+      OIDC-trust abuse, non-human identity and secret reachability
 
 ## Design
 

@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "Security-testing agent skills from UnboundCompute.",
-    "version": "0.3.0"
+    "version": "0.4.0"
   },
   "plugins": [
     {
       "name": "security-agent-skills",
       "source": ".",
-      "description": "White-box bug hunting, AI-agent and LLM red-teaming, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics, as portable tool-agnostic agent skills.",
+      "description": "White-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics, as portable tool-agnostic agent skills.",
       "category": "security",
       "license": "MIT"
     }
