@@ -62,6 +62,9 @@ tools at each step and emitting findings in the shared schema.
 | [detecting-race-conditions](skills/detecting-race-conditions) | white-box | TOCTOU, check-then-act, atomicity, lock misuse |
 | [hunting-business-logic-flaws](skills/hunting-business-logic-flaws) | white-box | Step-skip, limit-overrun, replay, and paywall bypass the scanners miss |
 | [reviewing-ai-generated-code](skills/reviewing-ai-generated-code) | white-box | Hallucinated imports, insecure defaults, and claim-versus-behavior gaps in model-written code |
+| [finding-crypto-misuse](skills/finding-crypto-misuse) | white-box | Nonce reuse, key recovery, padding oracles, length extension proven to a recovery |
+| [finding-fail-open-flaws](skills/finding-fail-open-flaws) | white-box | Controls that allow on error, empty allowlist, missing input, or a caught denial |
+| [auditing-declarative-authorization](skills/auditing-declarative-authorization) | white-box | Routes that skip the filter, permissive defaults, ownership not checked |
 | [hunting-bug-variants](skills/hunting-bug-variants) | research | One confirmed bug to its siblings and the paths a fix missed |
 | [extracting-nday-from-a-patch](skills/extracting-nday-from-a-patch) | research | A fix or version diff to the bug it fixed and the variants it left |
 | [adjudicating-dependency-cve-reachability](skills/adjudicating-dependency-cve-reachability) | research | Is a dependency CVE actually reachable from your code, or noise |
@@ -77,6 +80,10 @@ tools at each step and emitting findings in the shared schema.
 | [evaluating-model-guardrails](skills/evaluating-model-guardrails) | agent | Policy-grounded, reproducible bypass-rate testing of safety guardrails |
 | [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
 | [testing-web-cache-attacks](skills/testing-web-cache-attacks) | black-box | Cache poisoning and cache deception through the key-versus-response gap |
+| [auditing-saml-and-oidc-flows](skills/auditing-saml-and-oidc-flows) | black-box | Signature wrapping, audience and redirect_uri abuse, replay, identity confusion |
+| [testing-request-smuggling](skills/testing-request-smuggling) | black-box | Front-end and back-end desync from conflicting length signals |
+| [testing-client-side-dom-vulnerabilities](skills/testing-client-side-dom-vulnerabilities) | black-box | DOM XSS, clobbering, prototype pollution, unsafe messaging, cross-origin leaks |
+| [exploiting-ssrf-to-cloud-metadata](skills/exploiting-ssrf-to-cloud-metadata) | black-box | SSRF proven to internal reach and instance-credential theft |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -106,10 +113,9 @@ on a small target. The method does not depend on which.
       execution, CI privilege abuse
 - [x] Business-logic depth: step-skip, limit-overrun, replay, and paywall bypass
 - [x] Web depth: cache poisoning and cache deception
-- [ ] More access-control depth: fail-open access control, framework
-      authorization-hook bypasses
-- [ ] Appsec depth: crypto misuse, federation flows, request smuggling,
-      client-side DOM attacks
+- [x] Access-control depth: fail-open controls, declarative authorization gaps
+- [x] Appsec depth: crypto misuse, federation (SAML and OIDC) flows, request
+      smuggling, client-side DOM attacks, SSRF to cloud metadata
 
 ## Design
 
