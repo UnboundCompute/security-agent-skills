@@ -1,0 +1,4 @@
+.DS_Store
+*.kuzu
+graph_out/
+__pycache__/
