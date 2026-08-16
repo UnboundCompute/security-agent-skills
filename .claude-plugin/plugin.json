@@ -16,6 +16,5 @@
     "static-analysis",
     "taint-analysis",
     "agent-skills"
-  ],
-  "skills": "./skills/"
+  ]
 }
