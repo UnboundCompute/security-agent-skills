@@ -1,12 +1,12 @@
 {
-  "name": "redteam-agent-skills",
+  "name": "security-agent-skills",
   "version": "0.3.0",
   "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
   },
-  "homepage": "https://github.com/UnboundCompute/redteam-agent-skills",
-  "repository": "https://github.com/UnboundCompute/redteam-agent-skills",
+  "homepage": "https://github.com/UnboundCompute/security-agent-skills",
+  "repository": "https://github.com/UnboundCompute/security-agent-skills",
   "license": "MIT",
   "keywords": [
     "security",

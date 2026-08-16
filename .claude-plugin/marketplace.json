@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "redteam-agent-skills",
+      "name": "security-agent-skills",
       "source": ".",
       "description": "White-box bug hunting, AI-agent and LLM red-teaming, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics, as portable tool-agnostic agent skills.",
       "category": "security",

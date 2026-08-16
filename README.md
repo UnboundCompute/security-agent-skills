@@ -1,4 +1,4 @@
-# redteam-agent-skills
+# security-agent-skills
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -25,8 +25,8 @@ permission to test.
 Installs all skills at once and keeps them updatable. In Claude Code:
 
 ```
-/plugin marketplace add UnboundCompute/redteam-agent-skills
-/plugin install redteam-agent-skills@unboundcompute
+/plugin marketplace add UnboundCompute/security-agent-skills
+/plugin install security-agent-skills@unboundcompute
 ```
 
 The skills are then available to Claude automatically, matched by their name and
