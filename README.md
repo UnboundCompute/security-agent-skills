@@ -61,6 +61,7 @@ tools at each step and emitting findings in the shared schema.
 | [detecting-memory-safety-bugs](skills/detecting-memory-safety-bugs) | white-box | UAF, double-free, OOB, uninitialized, NULL deref |
 | [detecting-race-conditions](skills/detecting-race-conditions) | white-box | TOCTOU, check-then-act, atomicity, lock misuse |
 | [hunting-business-logic-flaws](skills/hunting-business-logic-flaws) | white-box | Step-skip, limit-overrun, replay, and paywall bypass the scanners miss |
+| [reviewing-ai-generated-code](skills/reviewing-ai-generated-code) | white-box | Hallucinated imports, insecure defaults, and claim-versus-behavior gaps in model-written code |
 | [hunting-bug-variants](skills/hunting-bug-variants) | research | One confirmed bug to its siblings and the paths a fix missed |
 | [extracting-nday-from-a-patch](skills/extracting-nday-from-a-patch) | research | A fix or version diff to the bug it fixed and the variants it left |
 | [adjudicating-dependency-cve-reachability](skills/adjudicating-dependency-cve-reachability) | research | Is a dependency CVE actually reachable from your code, or noise |
@@ -72,7 +73,10 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-ai-agent-permissions](skills/auditing-ai-agent-permissions) | agent | Excessive agency, missing approval gates, egress, denial-of-wallet |
 | [testing-rag-and-memory-poisoning](skills/testing-rag-and-memory-poisoning) | agent | Poisoned index, memory, and search results that fire on an innocent query |
 | [testing-llm-insecure-output-handling](skills/testing-llm-insecure-output-handling) | agent | Model output to XSS, markdown-image exfil, terminal escapes, smuggled unicode |
+| [auditing-ml-model-supply-chain](skills/auditing-ml-model-supply-chain) | agent | Deserialization RCE on model load, poisoned weights, hub name confusion |
+| [evaluating-model-guardrails](skills/evaluating-model-guardrails) | agent | Policy-grounded, reproducible bypass-rate testing of safety guardrails |
 | [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
+| [testing-web-cache-attacks](skills/testing-web-cache-attacks) | black-box | Cache poisoning and cache deception through the key-versus-response gap |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -96,11 +100,16 @@ on a small target. The method does not depend on which.
       MCP tool-integration abuse, multi-agent and delegation abuse, agent
       permissions and least-privilege, RAG and memory poisoning, insecure
       output handling
+- [x] AI/ML security depth: untrusted model supply chain, guardrail evaluation,
+      AI-generated-code review
 - [x] Supply chain: dependency confusion, slopsquatting, poisoned pipeline
       execution, CI privilege abuse
 - [x] Business-logic depth: step-skip, limit-overrun, replay, and paywall bypass
+- [x] Web depth: cache poisoning and cache deception
 - [ ] More access-control depth: fail-open access control, framework
       authorization-hook bypasses
+- [ ] Appsec depth: crypto misuse, federation flows, request smuggling,
+      client-side DOM attacks
 
 ## Design
 
