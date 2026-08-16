@@ -1,5 +1,13 @@
 # security-agent-skills
 
+![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+![skills](https://img.shields.io/badge/skills-30-2ea44f?style=flat-square)
+![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
+![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
+
+**30 tool-agnostic security-testing skills for AI coding agents: white-box bug
+hunting, AI-agent and LLM red-teaming, supply-chain risk, and appsec depth.**
+
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
 as portable [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills).
