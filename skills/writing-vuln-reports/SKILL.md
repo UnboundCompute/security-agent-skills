@@ -38,7 +38,7 @@ Lead with impact, prove it fast, make the fix obvious. Sections:
 
 1. **Title** - the specific defect and where. "IDOR in `admin_bulk_delete` lets
    any user delete any post," not "Access control issue."
-2. **Summary** (2–3 sentences) - what the bug is, who can trigger it, what they
+2. **Summary** (2 to 3 sentences) - what the bug is, who can trigger it, what they
    get. A busy triager should grasp severity from this alone.
 3. **Impact** - the concrete consequence, tied to the target's threat model. Who
    is harmed, what they lose, what precondition is needed (auth level, timing,

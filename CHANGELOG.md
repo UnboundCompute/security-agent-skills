@@ -3,6 +3,23 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.5.0
+
+Added a skill and MCP supply-chain trust lane, growing the library from 33 to 36
+skills. These vet the skills and MCP servers you install into an agent, before
+you trust them.
+
+Added, skill and MCP supply-chain trust:
+
+- `auditing-skill-and-mcp-instructions`
+- `auditing-declared-vs-used-permissions`
+- `vetting-skills-before-install`
+
+Changed:
+
+- README badge, hero, skills table, and roadmap updated for the new lane.
+- Plugin and marketplace manifests updated to version 0.5.0.
+
 ## 0.4.0
 
 Added a cloud identity and CI/CD trust lane, growing the library from 30 to 33

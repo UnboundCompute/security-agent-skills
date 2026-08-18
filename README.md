@@ -1,13 +1,13 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-33-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-36-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**33 tool-agnostic security-testing skills for AI coding agents: white-box bug
-hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust,
-supply-chain risk, and appsec depth.**
+**36 tool-agnostic security-testing skills for AI coding agents: white-box bug
+hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, skill and
+supply-chain trust, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -87,6 +87,9 @@ tools at each step and emitting findings in the shared schema.
 | [testing-llm-insecure-output-handling](skills/testing-llm-insecure-output-handling) | agent | Model output to XSS, markdown-image exfil, terminal escapes, smuggled unicode |
 | [auditing-ml-model-supply-chain](skills/auditing-ml-model-supply-chain) | agent | Deserialization RCE on model load, poisoned weights, hub name confusion |
 | [evaluating-model-guardrails](skills/evaluating-model-guardrails) | agent | Policy-grounded, reproducible bypass-rate testing of safety guardrails |
+| [auditing-skill-and-mcp-instructions](skills/auditing-skill-and-mcp-instructions) | supply-chain | Lint a skill or MCP server's instruction text for hidden, override, and exfil instructions |
+| [auditing-declared-vs-used-permissions](skills/auditing-declared-vs-used-permissions) | supply-chain | The consent gap: permissions a skill declares versus what its code actually uses |
+| [vetting-skills-before-install](skills/vetting-skills-before-install) | supply-chain | Vet a third-party skill or MCP server to an install, constrain, or deny verdict |
 | [mapping-attack-surface](skills/mapping-attack-surface) | black-box | Authorized recon to a prioritized surface inventory |
 | [testing-web-cache-attacks](skills/testing-web-cache-attacks) | black-box | Cache poisoning and cache deception through the key-versus-response gap |
 | [auditing-saml-and-oidc-flows](skills/auditing-saml-and-oidc-flows) | black-box | Signature wrapping, audience and redirect_uri abuse, replay, identity confusion |
@@ -123,6 +126,9 @@ on a small target. The method does not depend on which.
       AI-generated-code review
 - [x] Supply chain: dependency confusion, slopsquatting, poisoned pipeline
       execution, CI privilege abuse
+- [x] Skill and MCP supply-chain trust: instruction-text linting, the
+      permission consent-gap, and vetting a third-party skill or server to an
+      install-or-deny verdict before you trust it
 - [x] Business-logic depth: step-skip, limit-overrun, replay, and paywall bypass
 - [x] Web depth: cache poisoning and cache deception
 - [x] Access-control depth: fail-open controls, declarative authorization gaps
