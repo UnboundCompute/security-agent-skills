@@ -3,6 +3,42 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.6.0
+
+Added three lanes, growing the library from 36 to 45 skills: API and
+object-authorization depth, host privilege escalation, and network-service
+trust. The API lane hunts the most common serious API bugs (reaching an object
+or writing a field the caller was never entitled to, and the surface a query API
+exposes). The host and network lanes fill well-worn but under-packaged sysadmin
+and netsec ground: local escalation through privileged binaries, jobs, and the
+dynamic loader, and the trust a mail setup, a management service, or a
+secure-shell session extends.
+
+Added, API and object-authorization depth:
+
+- `hunting-broken-object-level-authorization`
+- `hunting-mass-assignment-and-property-authz`
+- `auditing-graphql-attack-surface`
+
+Added, host privilege escalation:
+
+- `hunting-setuid-and-capability-escalation`
+- `hunting-scheduled-job-and-search-path-hijacks`
+- `hunting-dynamic-linker-hijacks`
+
+Added, network-service trust:
+
+- `testing-smtp-smuggling-and-email-spoofing`
+- `enumerating-snmp-exposure`
+- `auditing-ssh-trust-and-agent-forwarding`
+
+Changed:
+
+- README badge, hero, skills table, and roadmap updated for the three new lanes.
+- Plugin and marketplace manifests updated to version 0.6.0, with
+  `api-security`, `authorization`, `idor`, `sysadmin`, `privilege-escalation`,
+  and `network-security` keywords.
+
 ## 0.5.0
 
 Added a skill and MCP supply-chain trust lane, growing the library from 33 to 36
