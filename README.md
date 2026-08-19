@@ -1,13 +1,13 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-36-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-39-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**36 tool-agnostic security-testing skills for AI coding agents: white-box bug
+**39 tool-agnostic security-testing skills for AI coding agents: white-box bug
 hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, skill and
-supply-chain trust, and appsec depth.**
+supply-chain trust, API and object-authorization depth, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -99,6 +99,9 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-iam-privilege-escalation-paths](skills/hunting-iam-privilege-escalation-paths) | cloud | Chain role assumptions, policy rewrites, and loose trust from low-priv to admin |
 | [auditing-cicd-oidc-trust](skills/auditing-cicd-oidc-trust) | cloud | Fork-run secret exposure, poisoned pipeline execution, over-broad token trust |
 | [hunting-non-human-identity-and-secret-reachability](skills/hunting-non-human-identity-and-secret-reachability) | cloud | Machine credentials that are live, over-privileged, and actually reachable |
+| [hunting-broken-object-level-authorization](skills/hunting-broken-object-level-authorization) | api | BOLA/IDOR: a client-supplied object reference reaching data with no owner binding |
+| [hunting-mass-assignment-and-property-authz](skills/hunting-mass-assignment-and-property-authz) | api | Payload fields the client should never write: role, owner, price, verified |
+| [auditing-graphql-attack-surface](skills/auditing-graphql-attack-surface) | api | Introspection, depth and cost, batching limits, per-field and per-mutation authz |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -136,6 +139,9 @@ on a small target. The method does not depend on which.
       smuggling, client-side DOM attacks, SSRF to cloud metadata
 - [x] Cloud identity and CI/CD trust: IAM privilege-escalation paths, pipeline
       OIDC-trust abuse, non-human identity and secret reachability
+- [x] API and object-authorization depth: broken object-level authorization
+      (BOLA/IDOR), mass assignment and object-property authorization, GraphQL
+      attack surface
 
 ## Design
 

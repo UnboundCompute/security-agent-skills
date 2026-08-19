@@ -3,6 +3,25 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.6.0
+
+Added an API and object-authorization depth lane, growing the library from 36 to
+39 skills. These hunt the most common serious API bugs: reaching an object or
+writing a field the caller was never entitled to, and the surface a query API
+exposes.
+
+Added, API and object-authorization depth:
+
+- `hunting-broken-object-level-authorization`
+- `hunting-mass-assignment-and-property-authz`
+- `auditing-graphql-attack-surface`
+
+Changed:
+
+- README badge, hero, skills table, and roadmap updated for the new lane.
+- Plugin and marketplace manifests updated to version 0.6.0, with
+  `api-security`, `authorization`, and `idor` keywords.
+
 ## 0.5.0
 
 Added a skill and MCP supply-chain trust lane, growing the library from 33 to 36
