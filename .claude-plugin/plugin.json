@@ -1,7 +1,7 @@
 {
   "name": "security-agent-skills",
-  "version": "0.6.0",
-  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service trust, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
+  "version": "0.7.0",
+  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service trust, injection and resource-exhaustion depth, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
   },
@@ -27,6 +27,11 @@
     "idor",
     "sysadmin",
     "privilege-escalation",
-    "network-security"
+    "network-security",
+    "denial-of-service",
+    "injection",
+    "detection-engineering",
+    "blue-team",
+    "serverless"
   ]
 }

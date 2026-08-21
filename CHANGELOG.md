@@ -3,6 +3,38 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.7.0
+
+Added two lanes, growing the library from 45 to 51 skills: injection and
+resource-exhaustion depth, and defensive detection and logging. The first fills
+appsec ground that sits between the injection catalogs and nobody packaged
+(single-request denial of service, unsafe archive extraction, and injection that
+survives an object-relational mapper). The second extends the library to
+blue-team and platform work without leaving its source-to-sink discipline:
+whether an application records the security events an investigation needs,
+whether detection rules survive an attacker who has read them, and whether an
+event-driven function trusts its trigger.
+
+Added, injection and resource-exhaustion depth:
+
+- `hunting-redos-and-complexity-dos`
+- `hunting-unsafe-archive-extraction`
+- `hunting-orm-and-query-builder-injection`
+
+Added, defensive detection and logging:
+
+- `auditing-security-logging-completeness`
+- `reviewing-detection-rules-for-evasion`
+- `auditing-serverless-event-source-trust`
+
+Changed:
+
+- README badge, hero, skills table, and roadmap updated for both lanes.
+- Plugin and marketplace manifests updated to version 0.7.0, with
+  `denial-of-service`, `injection`, `detection-engineering`, `blue-team`, and
+  `serverless` keywords.
+- Social preview regenerated to 51 skills.
+
 ## 0.6.0
 
 Added three lanes, growing the library from 36 to 45 skills: API and

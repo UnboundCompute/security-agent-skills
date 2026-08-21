@@ -1,14 +1,15 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-45-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-51-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**45 tool-agnostic security-testing skills for AI coding agents: white-box bug
+**51 tool-agnostic security-testing skills for AI coding agents: white-box bug
 hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, skill and
 supply-chain trust, API and object-authorization depth, host and network-service
-trust, and appsec depth.**
+trust, injection and resource-exhaustion depth, defensive detection and logging,
+and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -103,12 +104,18 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-broken-object-level-authorization](skills/hunting-broken-object-level-authorization) | api | BOLA/IDOR: a client-supplied object reference reaching data with no owner binding |
 | [hunting-mass-assignment-and-property-authz](skills/hunting-mass-assignment-and-property-authz) | api | Payload fields the client should never write: role, owner, price, verified |
 | [auditing-graphql-attack-surface](skills/auditing-graphql-attack-surface) | api | Introspection, depth and cost, batching limits, per-field and per-mutation authz |
+| [hunting-redos-and-complexity-dos](skills/hunting-redos-and-complexity-dos) | appsec | Single-request DoS: backtracking regex, quadratic loops, and hash flooding with no bound |
+| [hunting-unsafe-archive-extraction](skills/hunting-unsafe-archive-extraction) | appsec | Archive path escape, symlink escape, decompression bombs, and post-extract execution |
+| [hunting-orm-and-query-builder-injection](skills/hunting-orm-and-query-builder-injection) | appsec | Raw-query escape hatches, identifier and sort injection, filter-object operator injection |
 | [hunting-setuid-and-capability-escalation](skills/hunting-setuid-and-capability-escalation) | host | Setuid/setgid and capability carriers paired with a reachable exec, read, write, or load primitive |
 | [hunting-scheduled-job-and-search-path-hijacks](skills/hunting-scheduled-job-and-search-path-hijacks) | host | Writable job scripts, PATH hijack, and wildcard/argument injection (filenames as flags) |
 | [hunting-dynamic-linker-hijacks](skills/hunting-dynamic-linker-hijacks) | host | Preload across a boundary, writable library paths, rpath and $ORIGIN into a writable dir |
 | [testing-smtp-smuggling-and-email-spoofing](skills/testing-smtp-smuggling-and-email-spoofing) | network | SMTP smuggling boundary desync, SPF/DKIM/DMARC alignment and enforcement gaps, open relay |
 | [enumerating-snmp-exposure](skills/enumerating-snmp-exposure) | network | Default community strings, downgrade, sensitive read views, and writable device state |
 | [auditing-ssh-trust-and-agent-forwarding](skills/auditing-ssh-trust-and-agent-forwarding) | network | Forwarded-agent abuse, proxy-command injection, host-key trust gaps, loose key options |
+| [auditing-security-logging-completeness](skills/auditing-security-logging-completeness) | defense | Whether security decisions are recorded, plus secrets-in-logs and log injection |
+| [reviewing-detection-rules-for-evasion](skills/reviewing-detection-rules-for-evasion) | defense | Variant, anchor, and self-defeating-exclusion bypasses of detection-as-code rules |
+| [auditing-serverless-event-source-trust](skills/auditing-serverless-event-source-trust) | defense | Event handlers that trust the payload or its source; event injection and blast radius |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -154,6 +161,11 @@ on a small target. The method does not depend on which.
       dynamic-linker hijacks
 - [x] Network-service trust: SMTP smuggling and email spoofing, SNMP exposure,
       SSH trust and agent forwarding
+- [x] Injection and resource-exhaustion depth: ReDoS and algorithmic-complexity
+      denial of service, unsafe archive extraction, ORM and query-builder
+      injection
+- [x] Defensive detection and logging: security-logging completeness,
+      detection-rule evasion review, serverless event-source trust
 
 ## Design
 
