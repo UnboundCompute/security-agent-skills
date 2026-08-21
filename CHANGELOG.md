@@ -3,6 +3,55 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.8.0
+
+A breadth wave: one skill per underserved security topic, growing the library
+from 51 to 61 skills across four new lanes. Firmware and embedded-software trust
+brings the source-to-sink discipline to shipped device code, where the reader is
+firmware source, init scripts, and default configuration rather than a web app.
+Web trust boundaries packages the cross-origin controls that are widely
+documented but rarely packaged as an adjudicating skill. Authentication and
+identity depth niches out three failure classes that general federation reviews
+skip. Abuse and isolation covers two systemic-property audits, one on limiting
+and one on the tenant boundary, where the strongest signal is a peer path that
+enforces where this one does not.
+
+Firmware is reframed as embedded-software security, executable by a coding agent
+over firmware source and configuration, not a physical-bench exercise. Each new
+skill keeps the coverage-and-adjudication stance: leads are facts, the false-
+positive killers ("check the other layer, the other build, the central policy")
+are first-class, and every finding lands in the shared schema.
+
+Added, firmware and embedded-software trust:
+
+- `auditing-secure-boot-and-firmware-signing`
+- `hunting-firmware-secrets-and-debug-interfaces`
+
+Added, web trust boundaries:
+
+- `auditing-webhook-authenticity-and-callback-trust`
+- `auditing-cors-and-cross-origin-trust`
+- `reviewing-content-security-policy`
+
+Added, authentication and identity depth:
+
+- `auditing-webauthn-and-passkey-flows`
+- `auditing-device-code-and-pkce-flows`
+- `auditing-randomness-and-nonce-quality`
+
+Added, abuse and isolation:
+
+- `reviewing-rate-limiting-and-abuse-controls`
+- `auditing-multi-tenant-isolation`
+
+Changed:
+
+- README badge, hero, skills table, and roadmap updated for all four lanes.
+- Plugin and marketplace manifests updated to version 0.8.0, with `firmware`,
+  `embedded-security`, `secure-boot`, `webauthn`, `passkeys`, `oauth`, `cors`,
+  `csp`, `webhooks`, `rate-limiting`, and `multi-tenancy` keywords.
+- Social preview regenerated to 61 skills.
+
 ## 0.7.0
 
 Added two lanes, growing the library from 45 to 51 skills: injection and
