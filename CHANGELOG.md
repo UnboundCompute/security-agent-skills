@@ -3,6 +3,66 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.9.0
+
+A platform-coverage wave, growing the library from 61 to 73 skills across five
+new lanes and reaching into three of the highest-demand review surfaces that the
+earlier waves skipped. Transport and web trust closes the network-path gap:
+subdomain takeover and dangling DNS is an infrastructure-state bug that
+source-focused review never sees, and TLS and certificate validation catches the
+client that accepts a certificate it should reject. Infrastructure-as-code and
+container hardening moves the source-to-sink discipline onto declared cloud
+resources, Kubernetes manifests, and image builds, where the durable edge over the
+existing checklist scanners is the adjudication layer: the effective config after
+variables and account defaults, the binding graph and admission verdict, and what
+actually survives into a shipped image. Mobile app security scopes three
+device-specific classes, cross-app component reach, deep-link and WebView trust,
+and a real credential a real reader can reach, with the credential-versus-public-
+identifier and reachability false-positive killers up front. Smart-contract and
+DeFi review enters a crowded field on rigor, not novelty: a clean split between
+reentrancy (reorder effects or add a mutex), access control (add or repair a
+gate), and economic manipulation proven profitable on a fork.
+
+Session lifecycle joins the authentication lane, and subdomain takeover joins web
+trust. Every new skill keeps the coverage-and-adjudication stance: leads are
+facts, the false-positive killers ("check the other layer, resolve the effective
+state, prove it pays") are first-class, and every finding lands in the shared
+schema.
+
+Added, infrastructure-as-code and container hardening:
+
+- `auditing-infrastructure-as-code-exposures`
+- `auditing-kubernetes-workload-and-rbac-hardening`
+- `auditing-container-image-build-hardening`
+
+Added, mobile app security:
+
+- `auditing-android-component-exposure`
+- `auditing-mobile-deeplink-trust`
+- `hunting-mobile-secret-and-storage-exposure`
+
+Added, transport and web trust:
+
+- `hunting-subdomain-takeover-and-dangling-dns`
+- `auditing-tls-and-certificate-validation`
+
+Added, authentication and session depth:
+
+- `auditing-session-lifecycle-and-fixation`
+
+Added, smart-contract and DeFi review:
+
+- `hunting-smart-contract-reentrancy`
+- `auditing-smart-contract-access-control`
+- `hunting-defi-economic-and-oracle-flaws`
+
+Changed:
+
+- README hero, skill table, and roadmap updated for the 73-skill count and the
+  new infrastructure-as-code, mobile, transport, and smart-contract lanes.
+- Plugin and marketplace manifests bumped to 0.9.0 with expanded descriptions and
+  new discovery keywords.
+
 ## 0.8.0
 
 A breadth wave: one skill per underserved security topic, growing the library
