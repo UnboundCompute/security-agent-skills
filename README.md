@@ -1,16 +1,18 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-61-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-73-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**61 tool-agnostic security-testing skills for AI coding agents: white-box bug
-hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, skill and
-supply-chain trust, API and object-authorization depth, host and network-service
-trust, firmware and embedded-software trust, web trust boundaries, authentication
-and identity depth, rate-limiting and multi-tenant isolation, injection and
-resource-exhaustion depth, defensive detection and logging, and appsec depth.**
+**73 tool-agnostic security-testing skills for AI coding agents: white-box bug
+hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust,
+infrastructure-as-code and container hardening, mobile app security, smart-contract
+and DeFi review, skill and supply-chain trust, API and object-authorization depth,
+host and network-service trust, firmware and embedded-software trust, web and
+transport trust boundaries, authentication and session depth, rate-limiting and
+multi-tenant isolation, injection and resource-exhaustion depth, defensive
+detection and logging, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -102,18 +104,25 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-iam-privilege-escalation-paths](skills/hunting-iam-privilege-escalation-paths) | cloud | Chain role assumptions, policy rewrites, and loose trust from low-priv to admin |
 | [auditing-cicd-oidc-trust](skills/auditing-cicd-oidc-trust) | cloud | Fork-run secret exposure, poisoned pipeline execution, over-broad token trust |
 | [hunting-non-human-identity-and-secret-reachability](skills/hunting-non-human-identity-and-secret-reachability) | cloud | Machine credentials that are live, over-privileged, and actually reachable |
+| [auditing-infrastructure-as-code-exposures](skills/auditing-infrastructure-as-code-exposures) | iac | Effective resource state after variables and defaults: public storage, open ingress, wildcard policies, plaintext secrets |
+| [auditing-kubernetes-workload-and-rbac-hardening](skills/auditing-kubernetes-workload-and-rbac-hardening) | iac | What the binding graph and admission actually allow: cluster-admin grants, escape-primitive workloads |
+| [auditing-container-image-build-hardening](skills/auditing-container-image-build-hardening) | iac | What survives into the shipped image: baked secrets, root user, unpinned bases, dangerous runtime requests |
 | [hunting-broken-object-level-authorization](skills/hunting-broken-object-level-authorization) | api | BOLA/IDOR: a client-supplied object reference reaching data with no owner binding |
 | [hunting-mass-assignment-and-property-authz](skills/hunting-mass-assignment-and-property-authz) | api | Payload fields the client should never write: role, owner, price, verified |
 | [auditing-graphql-attack-surface](skills/auditing-graphql-attack-surface) | api | Introspection, depth and cost, batching limits, per-field and per-mutation authz |
 | [hunting-redos-and-complexity-dos](skills/hunting-redos-and-complexity-dos) | appsec | Single-request DoS: backtracking regex, quadratic loops, and hash flooding with no bound |
 | [hunting-unsafe-archive-extraction](skills/hunting-unsafe-archive-extraction) | appsec | Archive path escape, symlink escape, decompression bombs, and post-extract execution |
 | [hunting-orm-and-query-builder-injection](skills/hunting-orm-and-query-builder-injection) | appsec | Raw-query escape hatches, identifier and sort injection, filter-object operator injection |
+| [auditing-android-component-exposure](skills/auditing-android-component-exposure) | mobile | What another app can reach and drive: exported components, weak permission gates, trusted intent extras |
+| [auditing-mobile-deeplink-trust](skills/auditing-mobile-deeplink-trust) | mobile | When an attacker URL drives a trusted action: scheme hijack, unvalidated params, WebView and JS-bridge trust |
+| [hunting-mobile-secret-and-storage-exposure](skills/hunting-mobile-secret-and-storage-exposure) | mobile | A real credential a real reader can reach: embedded secrets, unsafe storage, credential-versus-identifier |
 | [hunting-setuid-and-capability-escalation](skills/hunting-setuid-and-capability-escalation) | host | Setuid/setgid and capability carriers paired with a reachable exec, read, write, or load primitive |
 | [hunting-scheduled-job-and-search-path-hijacks](skills/hunting-scheduled-job-and-search-path-hijacks) | host | Writable job scripts, PATH hijack, and wildcard/argument injection (filenames as flags) |
 | [hunting-dynamic-linker-hijacks](skills/hunting-dynamic-linker-hijacks) | host | Preload across a boundary, writable library paths, rpath and $ORIGIN into a writable dir |
 | [testing-smtp-smuggling-and-email-spoofing](skills/testing-smtp-smuggling-and-email-spoofing) | network | SMTP smuggling boundary desync, SPF/DKIM/DMARC alignment and enforcement gaps, open relay |
 | [enumerating-snmp-exposure](skills/enumerating-snmp-exposure) | network | Default community strings, downgrade, sensitive read views, and writable device state |
 | [auditing-ssh-trust-and-agent-forwarding](skills/auditing-ssh-trust-and-agent-forwarding) | network | Forwarded-agent abuse, proxy-command injection, host-key trust gaps, loose key options |
+| [auditing-tls-and-certificate-validation](skills/auditing-tls-and-certificate-validation) | network | When the client accepts a certificate it should reject: disabled verification, trust-all managers, downgrade |
 | [auditing-security-logging-completeness](skills/auditing-security-logging-completeness) | defense | Whether security decisions are recorded, plus secrets-in-logs and log injection |
 | [reviewing-detection-rules-for-evasion](skills/reviewing-detection-rules-for-evasion) | defense | Variant, anchor, and self-defeating-exclusion bypasses of detection-as-code rules |
 | [auditing-serverless-event-source-trust](skills/auditing-serverless-event-source-trust) | defense | Event handlers that trust the payload or its source; event injection and blast radius |
@@ -122,11 +131,16 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-webhook-authenticity-and-callback-trust](skills/auditing-webhook-authenticity-and-callback-trust) | web-trust | Proving the webhook caller and pinning the callback target against SSRF |
 | [auditing-cors-and-cross-origin-trust](skills/auditing-cors-and-cross-origin-trust) | web-trust | Reflected origins, null origin, substring allowlists, and postMessage origin checks |
 | [reviewing-content-security-policy](skills/reviewing-content-security-policy) | web-trust | Whether a policy actually stops injected script or only looks strict |
+| [hunting-subdomain-takeover-and-dangling-dns](skills/hunting-subdomain-takeover-and-dangling-dns) | web-trust | Who can claim the name you still point at: dangling records, delegation takeover, teardown ordering |
 | [auditing-webauthn-and-passkey-flows](skills/auditing-webauthn-and-passkey-flows) | auth | Passkey and WebAuthn ceremonies: challenge binding, origin, user-verification and counter checks |
 | [auditing-device-code-and-pkce-flows](skills/auditing-device-code-and-pkce-flows) | auth | Proof-key and device-code grants: a code becoming a token without proof |
 | [auditing-randomness-and-nonce-quality](skills/auditing-randomness-and-nonce-quality) | auth | Guessable-by-construction secrets: weak generators, short or reused nonces, low entropy |
+| [auditing-session-lifecycle-and-fixation](skills/auditing-session-lifecycle-and-fixation) | auth | Whether a session is rotated, scoped, and destroyed: fixation, post-logout replay, endless lifetime |
 | [reviewing-rate-limiting-and-abuse-controls](skills/reviewing-rate-limiting-and-abuse-controls) | abuse | Missing, spoofable-keyed, or per-instance limits on sensitive and expensive endpoints |
 | [auditing-multi-tenant-isolation](skills/auditing-multi-tenant-isolation) | abuse | Whether every data operation is scoped to the caller's tenant |
+| [hunting-smart-contract-reentrancy](skills/hunting-smart-contract-reentrancy) | web3 | Acting on state not yet updated: interaction-before-effects, cross-function and read-only reentrancy |
+| [auditing-smart-contract-access-control](skills/auditing-smart-contract-access-control) | web3 | Who may call the privileged function: missing modifiers, unprotected initializers, attacker delegatecall |
+| [hunting-defi-economic-and-oracle-flaws](skills/hunting-defi-economic-and-oracle-flaws) | web3 | Profiting by moving a price nobody bounded: spot-oracle and flash-loan manipulation, rounding, share math |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -180,11 +194,21 @@ on a small target. The method does not depend on which.
 - [x] Firmware and embedded-software trust: secure-boot and firmware-signing
       audit, embedded-secret and debug-interface hunting
 - [x] Web trust boundaries: webhook authenticity and callback-SSRF, CORS and
-      cross-origin trust, content-security-policy review
-- [x] Authentication and identity depth: passkey and WebAuthn ceremonies,
-      proof-key and device-code grants, randomness and nonce quality
+      cross-origin trust, content-security-policy review, subdomain takeover
+      and dangling DNS
+- [x] Authentication and session depth: passkey and WebAuthn ceremonies,
+      proof-key and device-code grants, randomness and nonce quality, session
+      lifecycle and fixation
 - [x] Abuse and isolation: rate-limiting and abuse-control coverage,
       multi-tenant isolation
+- [x] Infrastructure-as-code and container hardening: cloud resource
+      exposures, Kubernetes workload and RBAC hardening, container image build
+      hardening
+- [x] Transport trust: TLS and certificate validation
+- [x] Mobile app security: Android component exposure, mobile deep-link trust,
+      mobile secret and storage exposure
+- [x] Smart-contract and DeFi review: reentrancy, access control, economic and
+      oracle manipulation
 
 ## Design
 
