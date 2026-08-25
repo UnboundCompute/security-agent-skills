@@ -1,7 +1,7 @@
 {
   "name": "security-agent-skills",
-  "version": "0.9.0",
-  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
+  "version": "0.10.0",
+  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
   },
@@ -56,6 +56,18 @@
     "web3",
     "smart-contracts",
     "solidity",
-    "defi"
+    "defi",
+    "move",
+    "aptos",
+    "sui",
+    "browser-extension",
+    "electron",
+    "vscode",
+    "grpc",
+    "websocket",
+    "jwt",
+    "cicd",
+    "github-actions",
+    "file-upload"
   ]
 }

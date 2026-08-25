@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "Security-testing agent skills from UnboundCompute.",
-    "version": "0.9.0"
+    "version": "0.10.0"
   },
   "plugins": [
     {
       "name": "security-agent-skills",
       "source": ".",
-      "description": "White-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics, as portable tool-agnostic agent skills.",
+      "description": "White-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics, as portable tool-agnostic agent skills.",
       "category": "security",
       "license": "MIT"
     }
