@@ -1,18 +1,21 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-73-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-82-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**73 tool-agnostic security-testing skills for AI coding agents: white-box bug
+**82 tool-agnostic security-testing skills for AI coding agents: white-box bug
 hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust,
+client-app trust surfaces across browser and editor extensions and Electron,
+wire-protocol and token trust across gRPC, WebSocket, and JWT,
 infrastructure-as-code and container hardening, mobile app security, smart-contract
-and DeFi review, skill and supply-chain trust, API and object-authorization depth,
-host and network-service trust, firmware and embedded-software trust, web and
-transport trust boundaries, authentication and session depth, rate-limiting and
-multi-tenant isolation, injection and resource-exhaustion depth, defensive
-detection and logging, and appsec depth.**
+and DeFi review across EVM and Move, skill and supply-chain trust, API and
+object-authorization depth, host and network-service trust, firmware and
+embedded-software trust, web and transport trust boundaries, authentication and
+session depth, rate-limiting and multi-tenant isolation, injection,
+file-upload, and resource-exhaustion depth, defensive detection and logging, and
+appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -103,6 +106,7 @@ tools at each step and emitting findings in the shared schema.
 | [exploiting-ssrf-to-cloud-metadata](skills/exploiting-ssrf-to-cloud-metadata) | black-box | SSRF proven to internal reach and instance-credential theft |
 | [hunting-iam-privilege-escalation-paths](skills/hunting-iam-privilege-escalation-paths) | cloud | Chain role assumptions, policy rewrites, and loose trust from low-priv to admin |
 | [auditing-cicd-oidc-trust](skills/auditing-cicd-oidc-trust) | cloud | Fork-run secret exposure, poisoned pipeline execution, over-broad token trust |
+| [hunting-cicd-workflow-injection](skills/hunting-cicd-workflow-injection) | cloud | Untrusted event data into a run step, privileged pull_request_target checkout, mutable-tag actions, cache and runner trust |
 | [hunting-non-human-identity-and-secret-reachability](skills/hunting-non-human-identity-and-secret-reachability) | cloud | Machine credentials that are live, over-privileged, and actually reachable |
 | [auditing-infrastructure-as-code-exposures](skills/auditing-infrastructure-as-code-exposures) | iac | Effective resource state after variables and defaults: public storage, open ingress, wildcard policies, plaintext secrets |
 | [auditing-kubernetes-workload-and-rbac-hardening](skills/auditing-kubernetes-workload-and-rbac-hardening) | iac | What the binding graph and admission actually allow: cluster-admin grants, escape-primitive workloads |
@@ -113,9 +117,13 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-redos-and-complexity-dos](skills/hunting-redos-and-complexity-dos) | appsec | Single-request DoS: backtracking regex, quadratic loops, and hash flooding with no bound |
 | [hunting-unsafe-archive-extraction](skills/hunting-unsafe-archive-extraction) | appsec | Archive path escape, symlink escape, decompression bombs, and post-extract execution |
 | [hunting-orm-and-query-builder-injection](skills/hunting-orm-and-query-builder-injection) | appsec | Raw-query escape hatches, identifier and sort injection, filter-object operator injection |
+| [auditing-file-upload-and-content-handling](skills/auditing-file-upload-and-content-handling) | appsec | When the type one layer trusts another contradicts: active-content serving, parser exploitation, polyglots, path escape |
 | [auditing-android-component-exposure](skills/auditing-android-component-exposure) | mobile | What another app can reach and drive: exported components, weak permission gates, trusted intent extras |
 | [auditing-mobile-deeplink-trust](skills/auditing-mobile-deeplink-trust) | mobile | When an attacker URL drives a trusted action: scheme hijack, unvalidated params, WebView and JS-bridge trust |
 | [hunting-mobile-secret-and-storage-exposure](skills/hunting-mobile-secret-and-storage-exposure) | mobile | A real credential a real reader can reach: embedded secrets, unsafe storage, credential-versus-identifier |
+| [auditing-browser-extension-trust](skills/auditing-browser-extension-trust) | client-app | What another page can reach through the extension: external messaging, content-script channels, host permissions, DOM sinks |
+| [auditing-editor-extension-workspace-trust](skills/auditing-editor-extension-workspace-trust) | client-app | What an untrusted repository makes the editor do on open: auto-run tasks, debug launches, workspace-sourced tool paths |
+| [auditing-electron-ipc-trust](skills/auditing-electron-ipc-trust) | client-app | When renderer content reaches a native capability: contextIsolation, nodeIntegration, the preload bridge, IPC handlers |
 | [hunting-setuid-and-capability-escalation](skills/hunting-setuid-and-capability-escalation) | host | Setuid/setgid and capability carriers paired with a reachable exec, read, write, or load primitive |
 | [hunting-scheduled-job-and-search-path-hijacks](skills/hunting-scheduled-job-and-search-path-hijacks) | host | Writable job scripts, PATH hijack, and wildcard/argument injection (filenames as flags) |
 | [hunting-dynamic-linker-hijacks](skills/hunting-dynamic-linker-hijacks) | host | Preload across a boundary, writable library paths, rpath and $ORIGIN into a writable dir |
@@ -123,6 +131,9 @@ tools at each step and emitting findings in the shared schema.
 | [enumerating-snmp-exposure](skills/enumerating-snmp-exposure) | network | Default community strings, downgrade, sensitive read views, and writable device state |
 | [auditing-ssh-trust-and-agent-forwarding](skills/auditing-ssh-trust-and-agent-forwarding) | network | Forwarded-agent abuse, proxy-command injection, host-key trust gaps, loose key options |
 | [auditing-tls-and-certificate-validation](skills/auditing-tls-and-certificate-validation) | network | When the client accepts a certificate it should reject: disabled verification, trust-all managers, downgrade |
+| [auditing-grpc-service-authorization](skills/auditing-grpc-service-authorization) | wire-trust | The method the interceptor does not cover: unary-versus-streaming gaps, per-method authz, reflection, transcoding gateways |
+| [auditing-websocket-connection-trust](skills/auditing-websocket-connection-trust) | wire-trust | Trust checked once at the upgrade, never per message: origin gates, per-message authz, message-as-transport sinks |
+| [auditing-jwt-verification-trust](skills/auditing-jwt-verification-trust) | wire-trust | When a signed token is verified on its own terms: header-chosen algorithm, key confusion, kid/jku injection, unchecked claims |
 | [auditing-security-logging-completeness](skills/auditing-security-logging-completeness) | defense | Whether security decisions are recorded, plus secrets-in-logs and log injection |
 | [reviewing-detection-rules-for-evasion](skills/reviewing-detection-rules-for-evasion) | defense | Variant, anchor, and self-defeating-exclusion bypasses of detection-as-code rules |
 | [auditing-serverless-event-source-trust](skills/auditing-serverless-event-source-trust) | defense | Event handlers that trust the payload or its source; event injection and blast radius |
@@ -141,6 +152,7 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-smart-contract-reentrancy](skills/hunting-smart-contract-reentrancy) | web3 | Acting on state not yet updated: interaction-before-effects, cross-function and read-only reentrancy |
 | [auditing-smart-contract-access-control](skills/auditing-smart-contract-access-control) | web3 | Who may call the privileged function: missing modifiers, unprotected initializers, attacker delegatecall |
 | [hunting-defi-economic-and-oracle-flaws](skills/hunting-defi-economic-and-oracle-flaws) | web3 | Profiting by moving a price nobody bounded: spot-oracle and flash-loan manipulation, rounding, share math |
+| [auditing-move-resource-ownership](skills/auditing-move-resource-ownership) | web3 | Move (Aptos and Sui): acting on a resource without proving ownership, capability leaks, ability misuse |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -177,7 +189,8 @@ on a small target. The method does not depend on which.
 - [x] Appsec depth: crypto misuse, federation (SAML and OIDC) flows, request
       smuggling, client-side DOM attacks, SSRF to cloud metadata
 - [x] Cloud identity and CI/CD trust: IAM privilege-escalation paths, pipeline
-      OIDC-trust abuse, non-human identity and secret reachability
+      OIDC-trust abuse, CI/CD workflow injection (untrusted data into a
+      privileged run step), non-human identity and secret reachability
 - [x] API and object-authorization depth: broken object-level authorization
       (BOLA/IDOR), mass assignment and object-property authorization, GraphQL
       attack surface
@@ -188,7 +201,7 @@ on a small target. The method does not depend on which.
       SSH trust and agent forwarding
 - [x] Injection and resource-exhaustion depth: ReDoS and algorithmic-complexity
       denial of service, unsafe archive extraction, ORM and query-builder
-      injection
+      injection, file-upload and content handling
 - [x] Defensive detection and logging: security-logging completeness,
       detection-rule evasion review, serverless event-source trust
 - [x] Firmware and embedded-software trust: secure-boot and firmware-signing
@@ -208,7 +221,12 @@ on a small target. The method does not depend on which.
 - [x] Mobile app security: Android component exposure, mobile deep-link trust,
       mobile secret and storage exposure
 - [x] Smart-contract and DeFi review: reentrancy, access control, economic and
-      oracle manipulation
+      oracle manipulation, Move resource-ownership and capability safety (Aptos
+      and Sui)
+- [x] Client-app trust surfaces: browser-extension message and permission trust,
+      editor-extension workspace trust, Electron renderer-to-native IPC trust
+- [x] Wire-protocol and token trust: gRPC service authorization, WebSocket
+      connection trust, JWT verification trust
 
 ## Design
 

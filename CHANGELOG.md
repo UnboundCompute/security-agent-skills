@@ -3,6 +3,69 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.10.0
+
+A niche-depth wave, growing the library from 73 to 82 skills across two clean new
+lanes and three lane extensions, all chosen for high demand and thin packaged
+presence. Client-app trust surfaces is the first new lane: the three places a
+desktop or in-browser app trusts content it should not, a browser extension that
+another page can reach through external messaging and content-script channels, an
+editor extension that an untrusted repository can drive on open through auto-run
+tasks and workspace-sourced tool paths, and an Electron app where renderer content
+reaches a native capability. Each leads with the false-positive killer that the
+scanners skip: the sender check, the workspace-trust state, and contextIsolation.
+Wire-protocol and token trust is the second: gRPC service authorization finds the
+method the interceptor does not cover (the unary-versus-streaming gap), WebSocket
+connection trust catches trust checked once at the upgrade and never per message,
+and JWT verification trust decides whether a signed token is verified on its own
+terms, resolving algorithm pinning and key source before flagging.
+
+Three extensions deepen existing lanes on the same adjudication wedge. CI/CD
+workflow injection joins the cloud lane: attacker-controlled repository data
+reaching a privileged run step, with the quoted-environment-variable fix as the
+kill. File-upload and content handling joins the injection lane: the bug is a type
+one layer trusts that another contradicts, with the no-execute origin and the
+server-side re-encode as the killers. Move resource-ownership joins the
+smart-contract lane, taking the resource-and-ability model of Aptos and Sui rather
+than the EVM account model its siblings own.
+
+Every new skill keeps the coverage-and-adjudication stance: leads are facts, the
+false-positive killers are first-class and resolved before any flag, and every
+finding lands in the shared schema.
+
+Added, client-app trust surfaces:
+
+- `auditing-browser-extension-trust`
+- `auditing-editor-extension-workspace-trust`
+- `auditing-electron-ipc-trust`
+
+Added, wire-protocol and token trust:
+
+- `auditing-grpc-service-authorization`
+- `auditing-websocket-connection-trust`
+- `auditing-jwt-verification-trust`
+
+Added, cloud identity and CI/CD trust:
+
+- `hunting-cicd-workflow-injection`
+
+Added, injection and resource-exhaustion depth:
+
+- `auditing-file-upload-and-content-handling`
+
+Added, smart-contract and DeFi review:
+
+- `auditing-move-resource-ownership`
+
+Changed:
+
+- README skill count 73 to 82, with the two new lanes in the hero, table, and
+  roadmap, and the three extended lanes updated in place.
+- `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` bumped to
+  0.10.0, with the two new lanes in the descriptions and new keywords (move,
+  aptos, sui, browser-extension, electron, vscode, grpc, websocket, jwt, cicd,
+  github-actions, file-upload).
+
 ## 0.9.0
 
 A platform-coverage wave, growing the library from 61 to 73 skills across five
