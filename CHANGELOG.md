@@ -3,6 +3,53 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.11.0
+
+A depth wave across the server-and-infrastructure trust surface, growing the
+library from 82 to 130 skills in four batches of twelve, each batch a coherent
+lane and each skill leading with the false-positive killer a scanner skips.
+
+The first batch is server-side injection and deserialization. Blind and
+second-order SQL injection covers the paths first-order testing walks past;
+NoSQL operator and where injection catches a value arriving as an operator or a
+server-side expression; LDAP injection and bind trust decides whether a filter
+or a bind authenticates the wrong identity; expression-language and
+search-engine injection find a string evaluated as a program or a query DSL;
+connection-string and JDBC-URL injection catch an attacker-set connection
+target; server-side prototype pollution catches one request changing every
+object. The deserialization set covers Java gadget chains, Python pickle and
+loader calls, PHP object injection and POP chains, and .NET type injection,
+where reading an object runs code or picks the type. Datastore exposure and
+abuse closes the batch on the unauthenticated cache or database reachable as a
+command surface.
+
+The second batch is cloud identity, secrets, and IaC trust: presigned-URL scope
+abuse, cross-account role trust boundaries, service-account impersonation
+chains, ECS task metadata boundaries, secrets-manager and KMS access-policy
+trust, S3 object-ownership trust, observability-pipeline collector trust, IaC
+module and provider supply chain, Terraform state and backend trust, Helm
+template and values injection, and Ansible become and vault trust. Each answers
+who can actually reach a credential, a secret, or a plan-time code path.
+
+The third batch is Kubernetes, container, and host workload trust: container
+escape surface, admission-control policy gaps, image provenance, pod-to-cloud
+credential reach, network-policy segmentation, service-mesh mTLS and authz,
+workload secret exposure, kubelet and node-API exposure, the namespace as a
+tenant boundary, container runtime and socket exposure, init and sidecar
+injection trust, and host mount and device exposure. The wedge throughout is
+the difference between what a manifest declares and what the cluster and node
+actually allow.
+
+The fourth batch is network, identity, and payment trust: HTTP request
+smuggling and desync, DNS rebinding and SSRF pivots, HTTP/2 and gRPC
+multiplexing trust, message-broker topic authorization, OAuth audience and
+scope trust, SAML and OIDC federation trust, JWT verification and key trust,
+mutual-TLS service identity, account recovery and reset trust, payment state
+machine and idempotency, payment callback and amount integrity, and price and
+coupon manipulation. These trace a request from where two parsers disagree on
+its boundary, through how a service proves who is calling, to how value moves
+through checkout.
+
 ## 0.10.0
 
 A niche-depth wave, growing the library from 73 to 82 skills across two clean new

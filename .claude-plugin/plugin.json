@@ -1,6 +1,6 @@
 {
   "name": "security-agent-skills",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
@@ -68,6 +68,23 @@
     "jwt",
     "cicd",
     "github-actions",
-    "file-upload"
+    "file-upload",
+    "sql-injection",
+    "nosql-injection",
+    "ldap-injection",
+    "deserialization",
+    "kms",
+    "secrets-management",
+    "service-mesh",
+    "admission-control",
+    "request-smuggling",
+    "ssrf",
+    "dns-rebinding",
+    "saml",
+    "oidc",
+    "mtls",
+    "helm",
+    "ansible",
+    "payment-security"
   ]
 }
