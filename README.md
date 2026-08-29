@@ -1,21 +1,23 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-82-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-130-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**82 tool-agnostic security-testing skills for AI coding agents: white-box bug
-hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust,
+**130 tool-agnostic security-testing skills for AI coding agents: white-box bug
+hunting, AI-agent and LLM red-teaming, server-side injection and deserialization
+depth across SQL, NoSQL, LDAP, expression-language, and object streams, cloud
+identity, secrets, and KMS trust, infrastructure-as-code and container/Kubernetes
+and host workload trust, network, wire-protocol, and multiplexing trust across
+HTTP/2, gRPC, message brokers, and mutual TLS, federation and token trust across
+SAML, OIDC, OAuth, and JWT, account-recovery and payment-and-commerce integrity,
 client-app trust surfaces across browser and editor extensions and Electron,
-wire-protocol and token trust across gRPC, WebSocket, and JWT,
-infrastructure-as-code and container hardening, mobile app security, smart-contract
-and DeFi review across EVM and Move, skill and supply-chain trust, API and
-object-authorization depth, host and network-service trust, firmware and
+mobile app security, smart-contract and DeFi review across EVM and Move, skill and
+supply-chain trust, API and object-authorization depth, firmware and
 embedded-software trust, web and transport trust boundaries, authentication and
-session depth, rate-limiting and multi-tenant isolation, injection,
-file-upload, and resource-exhaustion depth, defensive detection and logging, and
-appsec depth.**
+session depth, rate-limiting and multi-tenant isolation, file-upload and
+resource-exhaustion depth, defensive detection and logging, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -153,6 +155,54 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-smart-contract-access-control](skills/auditing-smart-contract-access-control) | web3 | Who may call the privileged function: missing modifiers, unprotected initializers, attacker delegatecall |
 | [hunting-defi-economic-and-oracle-flaws](skills/hunting-defi-economic-and-oracle-flaws) | web3 | Profiting by moving a price nobody bounded: spot-oracle and flash-loan manipulation, rounding, share math |
 | [auditing-move-resource-ownership](skills/auditing-move-resource-ownership) | web3 | Move (Aptos and Sui): acting on a resource without proving ownership, capability leaks, ability misuse |
+| [hunting-blind-and-second-order-sql-injection](skills/hunting-blind-and-second-order-sql-injection) | injection | Boolean, time, and error blind paths, plus stored input that executes on a later read |
+| [hunting-nosql-operator-and-where-injection](skills/hunting-nosql-operator-and-where-injection) | injection | A value arriving as a query operator or a server-side where/JS expression |
+| [hunting-ldap-injection-and-bind-trust](skills/hunting-ldap-injection-and-bind-trust) | injection | Filter injection and bind logic that lets input decide authentication |
+| [hunting-expression-language-injection](skills/hunting-expression-language-injection) | injection | Template and expression contexts that evaluate a string as a program |
+| [hunting-search-engine-injection](skills/hunting-search-engine-injection) | injection | Query-DSL and script-query injection into a search backend |
+| [hunting-connection-string-and-jdbc-url-injection](skills/hunting-connection-string-and-jdbc-url-injection) | injection | Attacker-set connection targets and driver properties that load or exfiltrate |
+| [hunting-server-side-prototype-pollution](skills/hunting-server-side-prototype-pollution) | injection | One request mutating a base prototype to change every object's behavior |
+| [hunting-java-deserialization-gadget-chains](skills/hunting-java-deserialization-gadget-chains) | deserialization | Untrusted object streams reaching a gadget chain that runs code on read |
+| [hunting-python-unsafe-deserialization](skills/hunting-python-unsafe-deserialization) | deserialization | pickle, YAML, and loaders that call a function while loading data |
+| [hunting-php-object-injection-pop-chains](skills/hunting-php-object-injection-pop-chains) | deserialization | unserialize reaching a property-oriented chain through magic methods |
+| [hunting-dotnet-deserialization-type-injection](skills/hunting-dotnet-deserialization-type-injection) | deserialization | Type-name-carrying formatters that instantiate an attacker-chosen type |
+| [auditing-datastore-exposure-and-abuse](skills/auditing-datastore-exposure-and-abuse) | datastore | Unauthenticated caches and databases reachable as a command surface |
+| [auditing-presigned-url-scope-abuse](skills/auditing-presigned-url-scope-abuse) | cloud | Signed URLs granting more path, method, or lifetime than the request intended |
+| [auditing-cross-account-role-trust-boundaries](skills/auditing-cross-account-role-trust-boundaries) | cloud | Trust policies that admit the wrong external principal without a condition |
+| [mapping-service-account-impersonation-chains](skills/mapping-service-account-impersonation-chains) | cloud | Token, impersonation, and key grants that let one identity become another |
+| [auditing-ecs-task-metadata-boundaries](skills/auditing-ecs-task-metadata-boundaries) | cloud | Containers reaching task or instance credentials they should not |
+| [reviewing-secrets-manager-access-policy-trust](skills/reviewing-secrets-manager-access-policy-trust) | cloud | Who can actually read a secret across resource, identity, and key policy |
+| [auditing-kms-key-policy-and-envelope-encryption](skills/auditing-kms-key-policy-and-envelope-encryption) | cloud | Who can decrypt: key-policy grants, grants, and envelope-key reach |
+| [auditing-observability-pipeline-collector-trust](skills/auditing-observability-pipeline-collector-trust) | cloud | Telemetry collectors trusting the payload or its source as input |
+| [auditing-s3-object-ownership-trust](skills/auditing-s3-object-ownership-trust) | cloud | When the object, not the bucket, decides who can read or overwrite |
+| [auditing-iac-module-and-provider-supply-chain](skills/auditing-iac-module-and-provider-supply-chain) | iac | Third-party modules and providers running code at plan and apply |
+| [auditing-terraform-state-and-backend-trust](skills/auditing-terraform-state-and-backend-trust) | iac | State files and backends that expose secrets or accept tampering |
+| [hunting-helm-template-and-values-injection](skills/hunting-helm-template-and-values-injection) | iac | Chart values that render into manifests as privilege or injection |
+| [auditing-ansible-become-and-vault-trust](skills/auditing-ansible-become-and-vault-trust) | iac | Privilege escalation, vault handling, and control-node trust in playbooks |
+| [hunting-container-escape-surface](skills/hunting-container-escape-surface) | k8s | Privileged, capability, and mount configurations that reach the host |
+| [auditing-admission-control-policy-gaps](skills/auditing-admission-control-policy-gaps) | k8s | Admission policies that fail open, miss resources, or can be bypassed |
+| [mapping-pod-to-cloud-credential-reach](skills/mapping-pod-to-cloud-credential-reach) | k8s | The cloud blast radius of one compromised pod's identity |
+| [auditing-network-policy-segmentation-gaps](skills/auditing-network-policy-segmentation-gaps) | k8s | Default-open pod networking and policies that do not actually segment |
+| [auditing-service-mesh-mtls-and-authz-trust](skills/auditing-service-mesh-mtls-and-authz-trust) | k8s | Mesh mTLS and authorization asserting a trust it does not enforce |
+| [auditing-workload-secret-exposure-surface](skills/auditing-workload-secret-exposure-surface) | k8s | Every reader of a workload secret: env, volume, RBAC, and node |
+| [hunting-kubelet-and-node-api-exposure](skills/hunting-kubelet-and-node-api-exposure) | k8s | Kubelet and node APIs exposing exec, logs, and workload control |
+| [auditing-namespace-as-tenant-boundary](skills/auditing-namespace-as-tenant-boundary) | k8s | What a namespace does not isolate when treated as a tenant boundary |
+| [auditing-init-and-sidecar-injection-trust](skills/auditing-init-and-sidecar-injection-trust) | k8s | Injected init and sidecar containers sharing a pod's trust |
+| [auditing-container-image-provenance](skills/auditing-container-image-provenance) | container | Mutable tags, unverified signatures, and image-to-artifact drift |
+| [auditing-container-runtime-and-socket-exposure](skills/auditing-container-runtime-and-socket-exposure) | container | A runtime socket or API handle that is a handle on the host |
+| [auditing-host-mount-and-device-exposure](skills/auditing-host-mount-and-device-exposure) | container | Host path and device mounts opening a route into the node filesystem |
+| [hunting-http-request-smuggling-and-desync](skills/hunting-http-request-smuggling-and-desync) | network | Front-end and back-end parsers disagreeing on where a request ends |
+| [hunting-dns-rebinding-and-ssrf-pivots](skills/hunting-dns-rebinding-and-ssrf-pivots) | network | SSRF, DNS rebinding, and redirect pivots turning the server into a proxy |
+| [auditing-http2-and-grpc-multiplexing-trust](skills/auditing-http2-and-grpc-multiplexing-trust) | wire-trust | h2c downgrade, pseudo-header forgery, and per-stream versus per-connection trust |
+| [auditing-message-broker-topic-authorization](skills/auditing-message-broker-topic-authorization) | wire-trust | Topic ACLs, wildcard subscribes, and cross-tenant reach on MQTT, Kafka, and AMQP |
+| [hunting-mutual-tls-and-service-identity-gaps](skills/hunting-mutual-tls-and-service-identity-gaps) | wire-trust | Certificates requested not required, chain validity mistaken for identity |
+| [auditing-oauth-token-audience-and-scope-trust](skills/auditing-oauth-token-audience-and-scope-trust) | auth | Audience, issuer, and scope confusion accepting a token outside its domain |
+| [auditing-saml-and-oidc-federation-trust](skills/auditing-saml-and-oidc-federation-trust) | auth | Signature wrapping, issuer/audience/nonce, and unbound subject in federation |
+| [auditing-jwt-verification-and-key-trust](skills/auditing-jwt-verification-and-key-trust) | auth | Algorithm confusion, attacker-chosen keys, decode-without-verify, unenforced claims |
+| [auditing-account-recovery-and-reset-trust](skills/auditing-account-recovery-and-reset-trust) | auth | Weak reset tokens, multi-factor bypass, and host-poisoned reset links |
+| [auditing-payment-state-machine-and-idempotency](skills/auditing-payment-state-machine-and-idempotency) | payment | Out-of-order and replayed transitions releasing value before settlement |
+| [auditing-payment-callback-and-amount-integrity](skills/auditing-payment-callback-and-amount-integrity) | payment | Forged callbacks and unreconciled amounts marking an order paid |
+| [hunting-price-and-coupon-manipulation](skills/hunting-price-and-coupon-manipulation) | payment | Client-set prices, negative quantities, and coupon stacking that lower the total |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -227,6 +277,34 @@ on a small target. The method does not depend on which.
       editor-extension workspace trust, Electron renderer-to-native IPC trust
 - [x] Wire-protocol and token trust: gRPC service authorization, WebSocket
       connection trust, JWT verification trust
+- [x] Server-side injection and deserialization depth: blind and second-order
+      SQL, NoSQL operator and where injection, LDAP injection and bind trust,
+      expression-language injection, search-engine injection, connection-string
+      and JDBC-URL injection, server-side prototype pollution, and Java,
+      Python, PHP, and .NET deserialization gadget and object-injection chains,
+      plus unauthenticated datastore exposure
+- [x] Cloud identity, secrets, and IaC trust: presigned-URL scope, cross-account
+      role trust boundaries, service-account impersonation chains, ECS task
+      metadata boundaries, secrets-manager and KMS access trust, S3
+      object-ownership trust, observability-collector trust, IaC module and
+      provider supply chain, Terraform state and backend trust, Helm
+      template/values injection, and Ansible become and vault trust
+- [x] Kubernetes, container, and host workload trust: container escape surface,
+      admission-control policy gaps, image provenance, pod-to-cloud credential
+      reach, network-policy segmentation, service-mesh mTLS and authz, workload
+      secret exposure, kubelet and node-API exposure, namespace-as-tenant
+      boundary, runtime and socket exposure, init/sidecar injection trust, and
+      host mount and device exposure
+- [x] Network, multiplexing, and service-identity trust: HTTP request smuggling
+      and desync, DNS rebinding and SSRF pivots, HTTP/2 and gRPC multiplexing
+      trust, message-broker topic authorization, and mutual-TLS service identity
+- [x] Federation, token, and recovery trust: OAuth audience and scope, SAML and
+      OIDC federation, JWT verification and key trust, and account-recovery and
+      reset trust
+- [x] Payment and commerce integrity: payment state machine and idempotency,
+      payment callback and amount integrity, and price and coupon manipulation
+- [ ] Emerging surfaces (next): AI application, web3 frontend, browser and
+      IoT/edge trust
 
 ## Design
 
