@@ -1,23 +1,27 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-130-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-142-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**130 tool-agnostic security-testing skills for AI coding agents: white-box bug
-hunting, AI-agent and LLM red-teaming, server-side injection and deserialization
+**142 tool-agnostic security-testing skills for AI coding agents: white-box bug
+hunting, AI-agent and LLM red-teaming, code-interpreter sandbox and
+model-inference-endpoint abuse, server-side injection and deserialization
 depth across SQL, NoSQL, LDAP, expression-language, and object streams, cloud
 identity, secrets, and KMS trust, infrastructure-as-code and container/Kubernetes
 and host workload trust, network, wire-protocol, and multiplexing trust across
 HTTP/2, gRPC, message brokers, and mutual TLS, federation and token trust across
 SAML, OIDC, OAuth, and JWT, account-recovery and payment-and-commerce integrity,
 client-app trust surfaces across browser and editor extensions and Electron,
-mobile app security, smart-contract and DeFi review across EVM and Move, skill and
-supply-chain trust, API and object-authorization depth, firmware and
-embedded-software trust, web and transport trust boundaries, authentication and
-session depth, rate-limiting and multi-tenant isolation, file-upload and
-resource-exhaustion depth, defensive detection and logging, and appsec depth.**
+mobile app security, smart-contract and DeFi review across EVM and Move plus web3
+account-abstraction, cross-chain bridge, MEV, signature-replay, and wallet-drainer
+trust, browser third-party-script and clickjacking trust, IoT and edge BLE and
+firmware-update trust, skill and supply-chain trust, API and object-authorization
+depth, firmware and embedded-software trust, web and transport trust boundaries,
+authentication and session depth, rate-limiting and multi-tenant isolation,
+file-upload and resource-exhaustion depth, defensive detection and logging, and
+appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -203,6 +207,18 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-payment-state-machine-and-idempotency](skills/auditing-payment-state-machine-and-idempotency) | payment | Out-of-order and replayed transitions releasing value before settlement |
 | [auditing-payment-callback-and-amount-integrity](skills/auditing-payment-callback-and-amount-integrity) | payment | Forged callbacks and unreconciled amounts marking an order paid |
 | [hunting-price-and-coupon-manipulation](skills/hunting-price-and-coupon-manipulation) | payment | Client-set prices, negative quantities, and coupon stacking that lower the total |
+| [hunting-code-interpreter-and-tool-sandbox-escape](skills/hunting-code-interpreter-and-tool-sandbox-escape) | ai-app | Model-generated code reaching network, host FS, credentials, or the host |
+| [auditing-system-prompt-and-context-leakage](skills/auditing-system-prompt-and-context-leakage) | ai-app | Secrets in the prompt, unscoped retrieval, and session or tenant memory bleed |
+| [auditing-ml-inference-endpoint-abuse](skills/auditing-ml-inference-endpoint-abuse) | ai-app | Denial-of-wallet, model extraction, and membership inference on a served model |
+| [hunting-mev-and-transaction-ordering-exposure](skills/hunting-mev-and-transaction-ordering-exposure) | web3 | Sandwichable swaps, sequencing races, and mempool intent leakage |
+| [auditing-account-abstraction-and-paymaster-trust](skills/auditing-account-abstraction-and-paymaster-trust) | web3 | ERC-4337 validation gaps and drainable paymaster sponsorship |
+| [auditing-cross-chain-bridge-and-message-trust](skills/auditing-cross-chain-bridge-and-message-trust) | web3 | Forged proofs, spoofable quora, replay, and unbalanced lock/mint accounting |
+| [hunting-signature-replay-and-eip712-domain-trust](skills/hunting-signature-replay-and-eip712-domain-trust) | web3 | Missing nonce or domain binding letting a signature replay or cross contexts |
+| [hunting-wallet-drainer-and-dapp-approval-abuse](skills/hunting-wallet-drainer-and-dapp-approval-abuse) | web3 | Unlimited approvals, overbroad permits, and blind-signing that drain a wallet |
+| [auditing-third-party-script-and-sri-trust](skills/auditing-third-party-script-and-sri-trust) | browser | Unpinned external script and permissive CSP enabling in-page skimming |
+| [auditing-clickjacking-and-ui-redressing](skills/auditing-clickjacking-and-ui-redressing) | browser | Framing and overlay redressing a sensitive one-click action |
+| [auditing-ble-and-gatt-authorization](skills/auditing-ble-and-gatt-authorization) | iot-edge | GATT characteristics without device-side authorization, pairing, or replay protection |
+| [auditing-ota-and-firmware-update-channel-trust](skills/auditing-ota-and-firmware-update-channel-trust) | iot-edge | Unsigned, swapped, or rolled-back firmware installing on a device |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -303,8 +319,11 @@ on a small target. The method does not depend on which.
       reset trust
 - [x] Payment and commerce integrity: payment state machine and idempotency,
       payment callback and amount integrity, and price and coupon manipulation
-- [ ] Emerging surfaces (next): AI application, web3 frontend, browser and
-      IoT/edge trust
+- [x] Emerging surfaces: AI-application code-interpreter sandbox escape,
+      system-prompt and context leakage, and inference-endpoint abuse; web3
+      MEV, account abstraction, cross-chain bridge, signature replay, and
+      wallet-drainer trust; browser third-party-script and clickjacking trust;
+      and IoT/edge BLE and firmware-update trust
 
 ## Design
 
