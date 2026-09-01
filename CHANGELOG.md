@@ -3,6 +3,42 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.12.0
+
+A wave across emerging trust surfaces, growing the library from 130 to 142
+skills in one batch of twelve, spanning AI applications, web3, the browser, and
+IoT and edge devices, each skill leading with the false-positive killer a
+scanner skips.
+
+The AI-application set covers the runtime of a served model. Code-interpreter
+and tool sandbox escape treats model-generated code as hostile and checks
+whether it reaches the network, the host filesystem, ambient credentials, or the
+host itself; system-prompt and context leakage assumes the model will reveal what
+it holds and checks that no secret and nothing cross-tenant is in the context;
+inference-endpoint abuse treats a served model as both a cost meter and a
+confidential asset, hunting denial-of-wallet, model extraction, and membership
+inference.
+
+The web3 set follows value through an on-chain stack. MEV and
+transaction-ordering exposure finds sandwichable swaps and sequencing races that
+a block producer controls; account abstraction and paymaster trust walks the
+ERC-4337 user-operation lifecycle for over-permissive validation and drainable
+sponsorship; cross-chain bridge and message trust checks that a destination
+genuinely verifies the source event before it mints or releases; signature
+replay and EIP-712 domain trust checks that a signature is bound to one action,
+one chain, and one use; wallet-drainer and dApp approval abuse finds the
+unlimited approvals, overbroad permits, and blind-signing that get a user to
+authorize their own loss.
+
+The browser set covers two front-end trust boundaries set by response headers:
+third-party-script and SRI trust treats an external script tag as code you did
+not write running with full page privileges, and clickjacking and UI redressing
+finds sensitive one-click actions a framed overlay can steer. The IoT and edge
+set covers a device's two remote surfaces: BLE and GATT authorization checks
+that the peripheral, not the app, enforces access, and OTA and firmware-update
+channel trust checks that a device verifies an image before it installs and runs
+it forever.
+
 ## 0.11.0
 
 A depth wave across the server-and-infrastructure trust surface, growing the
