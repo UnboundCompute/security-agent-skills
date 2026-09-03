@@ -1,11 +1,11 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-154-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-174-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**154 tool-agnostic security-testing skills for AI coding agents: white-box bug
+**174 tool-agnostic security-testing skills for AI coding agents: white-box bug
 hunting, AI-agent and LLM red-teaming, code-interpreter sandbox and
 model-inference-endpoint abuse, server-side injection and deserialization
 depth across SQL, NoSQL, LDAP, expression-language, and object streams, cloud
@@ -22,8 +22,12 @@ trust, browser third-party-script and clickjacking trust, IoT and edge BLE and
 firmware-update trust, skill and supply-chain trust, API and object-authorization
 depth, firmware and embedded-software trust, web and transport trust boundaries,
 authentication and session depth, rate-limiting and multi-tenant isolation,
-file-upload and resource-exhaustion depth, defensive detection and logging, and
-appsec depth.**
+file-upload and resource-exhaustion depth, the classic web-attack classes across
+XSS, template and command injection, XXE, XPath, path traversal, formula and
+include injection, HTTP parameter pollution, and CRLF, the web trust-boundary
+classes across open redirect, CSRF, host-header and URL-parsing trust, cache
+deception, server-side rendering and SVG abuse, Unicode canonicalization bypass,
+and postMessage trust, defensive detection and logging, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -233,6 +237,26 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-tenant-onboarding-and-discovery-abuse](skills/hunting-tenant-onboarding-and-discovery-abuse) | identity | Domain auto-join, unproven claims, and unbound invites into a tenant |
 | [auditing-break-glass-account-trust](skills/auditing-break-glass-account-trust) | identity | Static, unwatched, or over-granted emergency access outliving the emergency |
 | [auditing-machine-identity-issuance](skills/auditing-machine-identity-issuance) | identity | Forgeable proofs and over-broad federation trust minting machine identities |
+| [hunting-reflected-and-stored-xss](skills/hunting-reflected-and-stored-xss) | injection | Untrusted data in an HTML context whose encoding is missing or wrong, running as script |
+| [hunting-server-side-template-injection](skills/hunting-server-side-template-injection) | injection | User input evaluated as template syntax reaching code execution or data exposure |
+| [hunting-xxe-and-xml-parser-trust](skills/hunting-xxe-and-xml-parser-trust) | injection | External entities and DTDs enabling file read, SSRF, or entity expansion |
+| [hunting-path-traversal-and-file-access](skills/hunting-path-traversal-and-file-access) | injection | Untrusted path segments escaping the intended root to read or write files |
+| [hunting-os-command-injection](skills/hunting-os-command-injection) | injection | User input reaching a shell or command interpreter as command text |
+| [hunting-command-argument-and-flag-injection](skills/hunting-command-argument-and-flag-injection) | injection | User input becoming an extra argument or flag that changes a command's behavior |
+| [hunting-xpath-and-xml-query-injection](skills/hunting-xpath-and-xml-query-injection) | injection | Untrusted input altering an XPath or XML query to bypass or extract |
+| [hunting-formula-injection-in-exports](skills/hunting-formula-injection-in-exports) | injection | User data becoming a live formula in an exported spreadsheet |
+| [hunting-server-side-and-edge-side-includes](skills/hunting-server-side-and-edge-side-includes) | injection | Untrusted input parsed as server-side or edge-side include directives |
+| [hunting-http-parameter-pollution](skills/hunting-http-parameter-pollution) | injection | Duplicate parameters parsed differently across components to bypass or confuse |
+| [hunting-crlf-and-response-splitting](skills/hunting-crlf-and-response-splitting) | injection | A newline in input injecting headers, splitting a response, or forging a log line |
+| [hunting-content-type-and-parser-confusion](skills/hunting-content-type-and-parser-confusion) | injection | Ambiguous content sniffed or parsed as a more dangerous type |
+| [auditing-open-redirect-and-forced-navigation](skills/auditing-open-redirect-and-forced-navigation) | web-trust | An untrusted target sending a user to an attacker-controlled destination |
+| [auditing-csrf-and-unsafe-state-changes](skills/auditing-csrf-and-unsafe-state-changes) | web-trust | A state change authorized on the ambient cookie with no session-bound proof |
+| [hunting-host-header-and-url-parsing-trust](skills/hunting-host-header-and-url-parsing-trust) | web-trust | Trusting the request host or a parser differential for links, caches, or routing |
+| [testing-web-cache-deception](skills/testing-web-cache-deception) | web-trust | A static-looking URL caching a victim's authenticated response for an attacker |
+| [auditing-error-handling-and-information-exposure](skills/auditing-error-handling-and-information-exposure) | web-trust | Failures disclosing traces, internals, or enumerable differentials to a client |
+| [hunting-server-side-rendering-and-svg-image-abuse](skills/hunting-server-side-rendering-and-svg-image-abuse) | web-trust | A server-side renderer fetching URLs, reading files, or running embedded script |
+| [hunting-unicode-normalization-and-canonicalization-bypass](skills/hunting-unicode-normalization-and-canonicalization-bypass) | web-trust | A check passing one form that a later transform turns dangerous at the sink |
+| [testing-postmessage-and-web-message-trust](skills/testing-postmessage-and-web-message-trust) | web-trust | A message handler acting without an exact origin and source check |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -344,6 +368,14 @@ on a small target. The method does not depend on which.
       lifecycle, directory-sync trust, IdP-initiated flow trust, tenant
       onboarding and discovery abuse, break-glass account trust, and
       machine-identity issuance
+- [x] Web-attack classes and trust boundaries: reflected and stored XSS,
+      server-side template injection, XXE and XPath, OS-command and
+      command-argument injection, path traversal, formula injection, server-
+      and edge-side includes, HTTP parameter pollution, CRLF and response
+      splitting, content-type and parser confusion, open redirect, CSRF,
+      host-header and URL-parsing trust, web cache deception, server-side
+      rendering and SVG abuse, Unicode canonicalization bypass, postMessage
+      trust, and error-handling information exposure
 
 ## Design
 

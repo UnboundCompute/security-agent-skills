@@ -3,6 +3,46 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.14.0
+
+A wave across the classic web-attack classes, growing the library from 154 to 174
+skills in one batch of twenty, filling a cluster the catalog had underserved
+despite its appsec positioning: the injection and web trust-boundary families that
+anyone testing a web application reaches for first. Each skill leads with the
+false-positive killer a scanner skips, establishing the intended encoding, guard,
+or trust before testing the deviation, and ends in a confirm-or-kill worked
+example rather than a pattern match.
+
+The injection set covers untrusted input crossing into a language or format that
+executes or restructures it. Reflected and stored XSS turns on the output context
+that decides the correct encoding, not the input alone; server-side template
+injection separates a value rendered by a template from a value evaluated as one;
+XXE and XML parser trust, XPath and XML query injection, and server- and edge-side
+includes each treat a parser that resolves more than data as the sink. OS-command
+injection and command-argument-and-flag injection split the shell metacharacter
+case from the subtler one where an added argument or flag changes a trusted
+command. Path traversal and file access follows a segment escaping its root;
+formula injection in exports follows user data becoming a live formula in a
+downloaded spreadsheet; HTTP parameter pollution follows duplicate parameters
+parsed differently across components; CRLF and response splitting follows a
+newline becoming a new header, a split response, or a forged log line; and
+content-type and parser confusion follows ambiguous content sniffed or parsed as a
+more dangerous type.
+
+The web trust-boundary set covers a decision that trusts the wrong source. Open
+redirect and forced navigation checks whether a redirect target is confined to the
+app's own pages; CSRF and unsafe state changes checks whether a mutation demands
+unpredictable session-bound proof beyond the ambient cookie; host-header and
+URL-parsing trust checks whether self-URLs, caches, and routing believe the
+request about the host; web cache deception checks whether a static-looking URL
+caches a victim's authenticated response; server-side rendering and SVG image abuse
+checks what a document renderer is allowed to fetch, read, and execute; Unicode
+normalization and canonicalization bypass checks whether a check and its sink read
+the same canonical form; postMessage and web message trust checks for an exact
+origin and source gate on a cross-document handler; and error-handling and
+information exposure checks what a real client receives on failure in the deployed
+configuration.
+
 ## 0.13.0
 
 A wave across enterprise identity and provisioning, growing the library from 142

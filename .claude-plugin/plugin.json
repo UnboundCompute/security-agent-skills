@@ -1,7 +1,7 @@
 {
   "name": "security-agent-skills",
-  "version": "0.13.0",
-  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, enterprise identity lifecycle across SCIM and JIT provisioning, directory sync, SSO logout, MFA and key lifecycle, Kerberos delegation, and break-glass and machine-identity trust, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
+  "version": "0.14.0",
+  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, enterprise identity lifecycle across SCIM and JIT provisioning, directory sync, SSO logout, MFA and key lifecycle, Kerberos delegation, and break-glass and machine-identity trust, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, the classic web-attack classes across reflected and stored XSS, server-side template and OS-command injection, XXE and XPath, path traversal, formula and include injection, HTTP parameter pollution, and CRLF, plus the web trust-boundary classes across open redirect, CSRF, host-header and URL-parsing trust, web cache deception, server-side rendering and SVG abuse, Unicode canonicalization bypass, postMessage trust, and information exposure, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
   },
@@ -114,6 +114,22 @@
     "directory-sync",
     "machine-identity",
     "workload-identity",
-    "break-glass"
+    "break-glass",
+    "xss",
+    "ssti",
+    "xxe",
+    "xpath-injection",
+    "path-traversal",
+    "command-injection",
+    "http-parameter-pollution",
+    "crlf-injection",
+    "formula-injection",
+    "csrf",
+    "open-redirect",
+    "host-header-injection",
+    "web-cache-deception",
+    "postmessage",
+    "unicode-bypass",
+    "information-disclosure"
   ]
 }
