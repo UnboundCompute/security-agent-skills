@@ -3,6 +3,47 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.13.0
+
+A wave across enterprise identity and provisioning, growing the library from 142
+to 154 skills in one batch of twelve, extending the authentication lane from a
+single login into the whole identity lifecycle: how identities are provisioned,
+elevated, synchronized, ended, and issued. Each skill leads with the
+false-positive killer a scanner skips, establishing the intended trust before
+testing the deviation.
+
+The provisioning set covers how an account and its privilege come into being.
+SCIM provisioning trust treats the provisioning token as an admin credential and
+checks tenant scoping, group mapping, and whether deprovisioning actually
+revokes; just-in-time provisioning and role mapping follows a federated login
+into the account and roles it creates, checking that no unvalidated claim sets
+privilege and no email domain auto-joins a tenant; directory-sync trust treats a
+bulk feed as untrusted input, checking that no source attribute sets privilege
+without validation and no spoofable key merges an identity; and tenant onboarding
+and discovery abuse walks every way into an organization, from domain auto-join to
+unbound invitations to first-claim-wins org creation.
+
+The credential-and-session set covers how identity persists and ends. SSO logout
+and session revocation ends a session by every means and checks that every
+downstream session and token actually terminates; MFA enrollment and reset abuse
+holds only the first factor and tries to add, reset, or skip the second; API-key
+and service-account key lifecycle bounds each long-lived credential by scope,
+expiry, and working revocation, and hunts leaked and exportable keys; and
+IdP-initiated flow trust treats an unsolicited assertion with no request anchor as
+untrusted, checking audience, replay defense, and RelayState handling.
+
+The privileged-identity set covers the highest-trust identities. Kerberos and AD
+delegation abuse traces unconstrained delegation and roastable service accounts to
+the highest identity they reach; break-glass account trust checks that the
+last-resort key is sealed, watched, minimally scoped, and reviewed; and
+machine-identity issuance follows issuance from the proof presented to the
+identity granted, checking that forgeable proofs and over-broad federation trusts
+cannot mint an identity they should not.
+
+Every skill follows the standard template and emits the shared finding schema,
+with source, sink, and evidence named for each. A new `identity` lane groups the
+twelve in the skills table.
+
 ## 0.12.0
 
 A wave across emerging trust surfaces, growing the library from 130 to 142

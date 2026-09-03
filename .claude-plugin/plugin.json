@@ -1,7 +1,7 @@
 {
   "name": "security-agent-skills",
-  "version": "0.12.0",
-  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
+  "version": "0.13.0",
+  "description": "Security-testing methodology as portable agent skills, spanning white-box bug hunting, AI-agent and LLM red-teaming, cloud identity and CI/CD trust, client-app trust surfaces across browser and editor extensions and Electron, wire-protocol and token trust across gRPC, WebSocket, and JWT, enterprise identity lifecycle across SCIM and JIT provisioning, directory sync, SSO logout, MFA and key lifecycle, Kerberos delegation, and break-glass and machine-identity trust, infrastructure-as-code and container hardening, mobile app security, smart-contract and DeFi review across EVM and Move, skill and MCP supply-chain vetting, API and object-authorization depth, host privilege escalation, network-service and transport trust, firmware and embedded-software trust, web trust boundaries, authentication and session depth, rate-limiting and multi-tenant isolation, injection and resource-exhaustion depth, file-upload and content handling, defensive detection and logging, supply-chain and dependency risk, business-logic and access-control depth, and appsec classics. Every skill is tool-agnostic and emits a shared finding schema.",
   "author": {
     "name": "UnboundCompute"
   },
@@ -99,6 +99,21 @@
     "clickjacking",
     "subresource-integrity",
     "model-extraction",
-    "sandbox-escape"
+    "sandbox-escape",
+    "scim",
+    "provisioning",
+    "identity-lifecycle",
+    "sso",
+    "single-logout",
+    "kerberos",
+    "active-directory",
+    "delegation",
+    "mfa",
+    "api-keys",
+    "service-accounts",
+    "directory-sync",
+    "machine-identity",
+    "workload-identity",
+    "break-glass"
   ]
 }
