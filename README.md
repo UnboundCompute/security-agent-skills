@@ -1,18 +1,20 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-142-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-154-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**142 tool-agnostic security-testing skills for AI coding agents: white-box bug
+**154 tool-agnostic security-testing skills for AI coding agents: white-box bug
 hunting, AI-agent and LLM red-teaming, code-interpreter sandbox and
 model-inference-endpoint abuse, server-side injection and deserialization
 depth across SQL, NoSQL, LDAP, expression-language, and object streams, cloud
 identity, secrets, and KMS trust, infrastructure-as-code and container/Kubernetes
 and host workload trust, network, wire-protocol, and multiplexing trust across
 HTTP/2, gRPC, message brokers, and mutual TLS, federation and token trust across
-SAML, OIDC, OAuth, and JWT, account-recovery and payment-and-commerce integrity,
+SAML, OIDC, OAuth, and JWT, enterprise identity lifecycle across SCIM and JIT
+provisioning, directory sync, MFA and key lifecycle, Kerberos delegation, and
+break-glass and machine-identity trust, account-recovery and payment-and-commerce integrity,
 client-app trust surfaces across browser and editor extensions and Electron,
 mobile app security, smart-contract and DeFi review across EVM and Move plus web3
 account-abstraction, cross-chain bridge, MEV, signature-replay, and wallet-drainer
@@ -219,6 +221,18 @@ tools at each step and emitting findings in the shared schema.
 | [auditing-clickjacking-and-ui-redressing](skills/auditing-clickjacking-and-ui-redressing) | browser | Framing and overlay redressing a sensitive one-click action |
 | [auditing-ble-and-gatt-authorization](skills/auditing-ble-and-gatt-authorization) | iot-edge | GATT characteristics without device-side authorization, pairing, or replay protection |
 | [auditing-ota-and-firmware-update-channel-trust](skills/auditing-ota-and-firmware-update-channel-trust) | iot-edge | Unsigned, swapped, or rolled-back firmware installing on a device |
+| [auditing-scim-provisioning-trust](skills/auditing-scim-provisioning-trust) | identity | Weak SCIM token, missing tenant scoping, and over-granting group mapping |
+| [auditing-jit-provisioning-and-role-mapping](skills/auditing-jit-provisioning-and-role-mapping) | identity | First-login claims mapping to over-privilege or wrong-tenant auto-join |
+| [auditing-sso-logout-and-session-revocation](skills/auditing-sso-logout-and-session-revocation) | identity | Sessions and tokens outliving logout, single logout, disable, or reset |
+| [hunting-kerberos-and-ad-delegation-abuse](skills/hunting-kerberos-and-ad-delegation-abuse) | identity | Unconstrained delegation and roastable service accounts reaching higher privilege |
+| [auditing-mfa-enrollment-and-reset-abuse](skills/auditing-mfa-enrollment-and-reset-abuse) | identity | Enrolling, resetting, or skipping a second factor from a stolen first factor |
+| [auditing-api-key-and-token-lifecycle](skills/auditing-api-key-and-token-lifecycle) | identity | Over-scoped, unexpiring, leaked, or unrevocable keys granting standing access |
+| [auditing-service-account-key-lifecycle](skills/auditing-service-account-key-lifecycle) | identity | Over-privileged, unrotated, or exportable service-account keys in repos and CI |
+| [auditing-directory-sync-trust](skills/auditing-directory-sync-trust) | identity | Bulk sync trusting source attributes to set privilege, tenancy, or identity |
+| [auditing-idp-initiated-flow-trust](skills/auditing-idp-initiated-flow-trust) | identity | Unsolicited assertions replayed, cross-audience, or redirecting via RelayState |
+| [hunting-tenant-onboarding-and-discovery-abuse](skills/hunting-tenant-onboarding-and-discovery-abuse) | identity | Domain auto-join, unproven claims, and unbound invites into a tenant |
+| [auditing-break-glass-account-trust](skills/auditing-break-glass-account-trust) | identity | Static, unwatched, or over-granted emergency access outliving the emergency |
+| [auditing-machine-identity-issuance](skills/auditing-machine-identity-issuance) | identity | Forgeable proofs and over-broad federation trust minting machine identities |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -324,6 +338,12 @@ on a small target. The method does not depend on which.
       MEV, account abstraction, cross-chain bridge, signature replay, and
       wallet-drainer trust; browser third-party-script and clickjacking trust;
       and IoT/edge BLE and firmware-update trust
+- [x] Enterprise identity and provisioning: SCIM and just-in-time provisioning
+      trust, SSO logout and session revocation, Kerberos and AD delegation
+      abuse, MFA enrollment and reset abuse, API-key and service-account key
+      lifecycle, directory-sync trust, IdP-initiated flow trust, tenant
+      onboarding and discovery abuse, break-glass account trust, and
+      machine-identity issuance
 
 ## Design
 
