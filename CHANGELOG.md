@@ -3,6 +3,51 @@
 Notable changes to this skill library. Versions follow the plugin version in
 `.claude-plugin/plugin.json`.
 
+## 0.15.0
+
+A wave across two under-served platform lanes, growing the library from 174 to 194
+skills in one batch of twenty: Windows and Active Directory privilege escalation,
+and native iOS and Android app security. The catalog had deep web, cloud, and
+identity coverage but little for the endpoint and the mobile app, the two places a
+real engagement spends much of its time. Each skill leads with the false-positive
+killer a scanner skips, establishing the intended privilege, protection class, or
+trust before testing the deviation, and ends in a confirm-or-kill worked example
+rather than a pattern match.
+
+The Windows and Active Directory set covers local privilege escalation and domain
+identity abuse. Windows service privilege escalation follows a standard-user write
+over a service binary, path, or configuration that a privileged account then runs;
+DLL hijacking and search order follows a privileged load-by-name resolving from a
+directory a standard user can write; token and privilege abuse treats a held
+sensitive privilege or a capturable token as the ladder to a higher context; UAC
+and integrity boundaries follows a medium-integrity foothold reaching high
+integrity without genuine consent; and named-pipe and RPC exposure follows a
+reachable local interface performing a privileged action without authorizing the
+caller. On the directory side, ADCS certificate-template abuse follows a
+low-privileged enrollment for a certificate that authenticates as a privileged
+account; Active Directory ACL abuse paths chains an object right into control of
+the account; NTLM coercion and relay pairs a coercion trigger with a service that
+does not bind the channel; group-policy and SYSVOL trust follows a writable policy,
+share file, or link that runs on every machine in scope; and credential-material
+exposure follows a credential store or process readable by a principal below the
+intended one.
+
+The native-mobile set covers iOS and Android app security. iOS keychain and
+data-protection gaps follow a secret stored under a class readable while locked, in
+a backup, or after migration; app-group and pasteboard exposure follows a secret on
+a shared surface whose audience exceeds the app boundary. WebView bridge exposure
+follows untrusted web content reaching a native bridge; TLS pinning and trust gaps
+follow a sensitive connection an intercepting network position can read or alter;
+biometric and local-auth bypass follows a gate that trusts a result rather than a
+key the authentication releases; and root/jailbreak and tamper resistance follows a
+security decision resting on a client integrity verdict a controlled device
+defeats. On distribution and inter-app reach, hybrid app-bundle and config exposure
+follows live secrets and private endpoints shipped in the package; mobile-backend
+and Firebase exposure follows a backend that trusts the app to enforce access;
+Android intent redirection and pending intents follows a privileged component
+launching an intent an untrusted caller steers; and tapjacking and overlay abuse
+follows a sensitive screen approving a tap it cannot confirm the user saw.
+
 ## 0.14.0
 
 A wave across the classic web-attack classes, growing the library from 154 to 174

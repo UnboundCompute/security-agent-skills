@@ -1,11 +1,11 @@
 # security-agent-skills
 
 ![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![skills](https://img.shields.io/badge/skills-174-2ea44f?style=flat-square)
+![skills](https://img.shields.io/badge/skills-194-2ea44f?style=flat-square)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2?style=flat-square)
 ![method](https://img.shields.io/badge/method-tool--agnostic-orange?style=flat-square)
 
-**174 tool-agnostic security-testing skills for AI coding agents: white-box bug
+**194 tool-agnostic security-testing skills for AI coding agents: white-box bug
 hunting, AI-agent and LLM red-teaming, code-interpreter sandbox and
 model-inference-endpoint abuse, server-side injection and deserialization
 depth across SQL, NoSQL, LDAP, expression-language, and object streams, cloud
@@ -27,7 +27,13 @@ XSS, template and command injection, XXE, XPath, path traversal, formula and
 include injection, HTTP parameter pollution, and CRLF, the web trust-boundary
 classes across open redirect, CSRF, host-header and URL-parsing trust, cache
 deception, server-side rendering and SVG abuse, Unicode canonicalization bypass,
-and postMessage trust, defensive detection and logging, and appsec depth.**
+and postMessage trust, Windows and Active Directory privilege escalation and
+domain identity abuse across services, DLL search order, tokens and privileges,
+ADCS, directory ACLs, NTLM coercion and relay, group policy, and credentials,
+native iOS and Android app security across the keychain and data protection,
+WebView bridges, TLS pinning, biometrics, app groups, app bundles, mobile
+backends, intent redirection, tapjacking, and tamper resistance, defensive
+detection and logging, and appsec depth.**
 
 Agent skills that encode security-testing *methodology*: the reasoning, ordering,
 and adjudication discipline behind real black-box and white-box testing, written
@@ -257,6 +263,26 @@ tools at each step and emitting findings in the shared schema.
 | [hunting-server-side-rendering-and-svg-image-abuse](skills/hunting-server-side-rendering-and-svg-image-abuse) | web-trust | A server-side renderer fetching URLs, reading files, or running embedded script |
 | [hunting-unicode-normalization-and-canonicalization-bypass](skills/hunting-unicode-normalization-and-canonicalization-bypass) | web-trust | A check passing one form that a later transform turns dangerous at the sink |
 | [testing-postmessage-and-web-message-trust](skills/testing-postmessage-and-web-message-trust) | web-trust | A message handler acting without an exact origin and source check |
+| [hunting-windows-service-privilege-escalation](skills/hunting-windows-service-privilege-escalation) | windows | A standard-user write over a service binary, path, or config that SYSTEM then runs |
+| [hunting-windows-dll-hijacking-and-search-order](skills/hunting-windows-dll-hijacking-and-search-order) | windows | A privileged load-by-name resolving from a directory a standard user can write |
+| [auditing-windows-token-and-privilege-abuse](skills/auditing-windows-token-and-privilege-abuse) | windows | A held sensitive privilege or capturable token that lifts a foothold to a higher context |
+| [hunting-adcs-certificate-template-abuse](skills/hunting-adcs-certificate-template-abuse) | windows | A low-privileged enrollment for a certificate that authenticates as a privileged account |
+| [hunting-active-directory-acl-abuse-paths](skills/hunting-active-directory-acl-abuse-paths) | windows | A right over a privileged object that chains into control of the account |
+| [hunting-ntlm-coercion-and-relay](skills/hunting-ntlm-coercion-and-relay) | windows | A coerced authentication relayed to a service that does not bind the channel |
+| [auditing-group-policy-and-sysvol-trust](skills/auditing-group-policy-and-sysvol-trust) | windows | A writable policy, share file, or link that runs on every machine in scope |
+| [hunting-windows-credential-material-exposure](skills/hunting-windows-credential-material-exposure) | windows | A credential store or process readable by a principal below the intended one |
+| [auditing-windows-uac-and-integrity-boundaries](skills/auditing-windows-uac-and-integrity-boundaries) | windows | A medium-integrity foothold reaching a high-integrity context without genuine consent |
+| [auditing-windows-named-pipe-and-rpc-exposure](skills/auditing-windows-named-pipe-and-rpc-exposure) | windows | A reachable local interface performing a privileged action without authorizing the caller |
+| [hunting-ios-keychain-and-data-protection-gaps](skills/hunting-ios-keychain-and-data-protection-gaps) | mobile | A secret stored under a class readable while locked, in a backup, or after migration |
+| [auditing-mobile-webview-bridge-exposure](skills/auditing-mobile-webview-bridge-exposure) | mobile | Untrusted web content reaching a native bridge that acts with the app's privileges |
+| [hunting-mobile-tls-pinning-and-trust-gaps](skills/hunting-mobile-tls-pinning-and-trust-gaps) | mobile | A sensitive connection an intercepting network position can read or alter |
+| [auditing-mobile-biometric-and-local-auth-bypass](skills/auditing-mobile-biometric-and-local-auth-bypass) | mobile | A local-auth gate trusting a result rather than a key the authentication releases |
+| [auditing-ios-app-group-and-pasteboard-exposure](skills/auditing-ios-app-group-and-pasteboard-exposure) | mobile | A secret on a shared surface whose audience exceeds the app's own boundary |
+| [hunting-hybrid-app-bundle-and-config-exposure](skills/hunting-hybrid-app-bundle-and-config-exposure) | mobile | Live secrets, private endpoints, or privileged flags shipped inside the app bundle |
+| [auditing-mobile-backend-and-firebase-exposure](skills/auditing-mobile-backend-and-firebase-exposure) | mobile | A backend that trusts the app to enforce access and serves any direct client |
+| [auditing-android-intent-redirection-and-pendingintent](skills/auditing-android-intent-redirection-and-pendingintent) | mobile | A privileged component launching or sending an intent an untrusted caller steers |
+| [hunting-mobile-tapjacking-and-overlay-abuse](skills/hunting-mobile-tapjacking-and-overlay-abuse) | mobile | A sensitive screen approving a tap it cannot confirm the user saw or made |
+| [auditing-mobile-root-jailbreak-and-tamper-resistance](skills/auditing-mobile-root-jailbreak-and-tamper-resistance) | mobile | A security decision resting on a client integrity verdict a controlled device defeats |
 | [writing-vuln-reports](skills/writing-vuln-reports) | reporting | Confirmed finding to a reproducible writeup |
 
 Every finding, from any skill, is emitted in the shared
@@ -376,6 +402,17 @@ on a small target. The method does not depend on which.
       host-header and URL-parsing trust, web cache deception, server-side
       rendering and SVG abuse, Unicode canonicalization bypass, postMessage
       trust, and error-handling information exposure
+- [x] Windows and Active Directory privilege escalation: service, DLL
+      search-order, and named-pipe/RPC abuse, sensitive token and privilege
+      abuse, UAC and integrity boundaries, ADCS certificate-template abuse,
+      directory ACL abuse paths, NTLM coercion and relay, group-policy and
+      SYSVOL trust, and credential-material exposure
+- [x] Native mobile app security: iOS keychain and data-protection gaps,
+      WebView native-bridge exposure, TLS pinning and trust gaps, biometric
+      and local-auth bypass, app-group and pasteboard exposure, app-bundle and
+      config exposure, mobile-backend and Firebase exposure, Android intent
+      redirection and pending intents, tapjacking and overlay abuse, and
+      root/jailbreak and tamper resistance
 
 ## Design
 
